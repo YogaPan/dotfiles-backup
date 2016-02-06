@@ -3,6 +3,7 @@
 echo -n "Checking for Xcode select: "
 if ! sh -c "xcode-select -p"; then
     sh -c "xcode-select --install"
+    exit
 fi
 
 echo -n "Checking for Homebrew: "
@@ -79,6 +80,24 @@ if ! command -v ag; then
     brew install the_silver_searcher
 fi
 
-vim +qall +PluginInstall
-source ~/.zshrc
+echo -n "Check for Vundle"
+if [ -e ~/.vim/bundle/Vundle.vim ]; then
+    echo "~/.vim/bundle/Vundle.vim"
+else
+    echo "No vundle installed."
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
+echo -n "Check Source Code font: "
+if [ -e ~/fonts ]; then
+    echo "~/fonts"
+else
+    echo "No fonts installed."
+    git clone https://github.com/powerline/fonts.git ~/fonts
+    cd ~/fonts/
+    ./install.sh
+    cd -
+fi
+
+vim +PluginInstall +qall
 echo "done"
