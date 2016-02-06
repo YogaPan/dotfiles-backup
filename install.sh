@@ -53,7 +53,7 @@ fi
 
 mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
 
-echo -n "Check for Vundle"
+echo -n "Check for Vundle: "
 if [ -e ~/.vim/bundle/Vundle.vim ]; then
     echo "~/.vim/bundle/Vundle.vim"
 else
@@ -77,21 +77,23 @@ if [ -e ~/.vimrc ]; then
         * ) exit
     esac
 else
+    echo "No .vimrc exist."
     ln -sf ~/dotfiles/.vimrc ~/.vimrc
 fi
 vim +PluginInstall +qall
 
-echo -n "Checking for .mvimrc: "
-if [ -e ~/.mvimrc ]; then
-    echo "~/.mvimrc"
-    echo -n ".mvimrc existed. Do you want to delete this file? (y/n) "
+echo -n "Checking for .gvimrc: "
+if [ -e ~/.gvimrc ]; then
+    echo "~/.gvimrc"
+    echo -n ".gvimrc existed. Do you want to delete this file? (y/n) "
     read yn
     case $yn in
-        [Yy]* ) ln -sf ~/dotfiles/.mvimrc ~/.mvimrc;;
+        [Yy]* ) ln -sf ~/dotfiles/.gvimrc ~/.gvimrc;;
         * ) exit
     esac
 else
-    ln -s ~/dotfiles/.mvimrc ~/.mvimrc;
+    echo "No .gvimrc exist."
+    ln -s ~/dotfiles/.gvimrc ~/.gvimrc;
 fi
 
 echo -n "Checking for Ag: "
