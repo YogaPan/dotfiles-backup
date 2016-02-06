@@ -40,6 +40,27 @@ else
     ln -s ~/dotfiles/.zshrc ~/.zshrc
 fi
 
+echo -n "Check Source Code font: "
+if [ -e ~/fonts ]; then
+    echo "~/fonts"
+else
+    echo "No fonts installed."
+    git clone https://github.com/powerline/fonts.git ~/fonts
+    cd ~/fonts/
+    ./install.sh
+    cd -
+fi
+
+mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
+
+echo -n "Check for Vundle"
+if [ -e ~/.vim/bundle/Vundle.vim ]; then
+    echo "~/.vim/bundle/Vundle.vim"
+else
+    echo "No vundle installed."
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
 echo -n "Checking for macvim: "
 if ! command -v mvim; then
     echo "No macvim installed."
@@ -58,8 +79,7 @@ if [ -e ~/.vimrc ]; then
 else
     ln -sf ~/dotfiles/.vimrc ~/.vimrc
 fi
-
-echo -n ""
+vim +PluginInstall +qall
 
 echo -n "Checking for .mvimrc: "
 if [ -e ~/.mvimrc ]; then
@@ -80,24 +100,4 @@ if ! command -v ag; then
     brew install the_silver_searcher
 fi
 
-echo -n "Check for Vundle"
-if [ -e ~/.vim/bundle/Vundle.vim ]; then
-    echo "~/.vim/bundle/Vundle.vim"
-else
-    echo "No vundle installed."
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
-
-echo -n "Check Source Code font: "
-if [ -e ~/fonts ]; then
-    echo "~/fonts"
-else
-    echo "No fonts installed."
-    git clone https://github.com/powerline/fonts.git ~/fonts
-    cd ~/fonts/
-    ./install.sh
-    cd -
-fi
-
-vim +PluginInstall +qall
 echo "done"
