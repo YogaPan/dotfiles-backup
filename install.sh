@@ -118,5 +118,20 @@ if ! command -v ag; then
   brew install the_silver_searcher
 fi
 
+# Check for .gemrc.
+echo -n "Checking for .gemrc: "
+if [ -e ~/.gemrc ]; then
+  echo "~/.gemrc"
+  echo -n ".gemrc existed. Do you want to delete this file? (y/n) "
+  read yn
+  case $yn in
+    [Yy]* ) ln -f ~/dotfiles/.gemrc ~/.gemrc ;;
+    *     ) exit
+  esac
+else
+  echo "No .gemrc exist."
+  ln ~/dotfiles/.gemrc ~/.gemrc;
+fi
+
 # Every things is done.
 echo "done"
