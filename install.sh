@@ -39,12 +39,12 @@ if [ -e ~/.zshrc ]; then
   echo -n ".zshrc existed. Do you want to delete this file? (y/n) "
   read yn
   case $yn in
-    [Yy]* ) ln -sf ~/dotfiles/.zshrc ~/.zshrc ;;
+    [Yy]* ) ln -f ~/dotfiles/.zshrc ~/.zshrc ;;
     *     ) exit
   esac
 else
   echo "No .zshrc file."
-  ln -s ~/dotfiles/.zshrc ~/.zshrc
+  ln ~/dotfiles/.zshrc ~/.zshrc
 fi
 
 # Install fonts.
@@ -85,12 +85,12 @@ if [ -e ~/.vimrc ]; then
   echo -n ".vimrc existed. Do you want to delete this file? (y/n) "
   read yn
   case $yn in
-    [Yy]* ) ln -sf ~/dotfiles/.vimrc ~/.vimrc ;;
+    [Yy]* ) ln -f ~/dotfiles/.vimrc ~/.vimrc ;;
     *     ) exit
   esac
 else
   echo "No .vimrc exist."
-  ln -sf ~/dotfiles/.vimrc ~/.vimrc
+  ln ~/dotfiles/.vimrc ~/.vimrc
 fi
 
 # Install all vim plugins.
@@ -103,12 +103,12 @@ if [ -e ~/.gvimrc ]; then
   echo -n ".gvimrc existed. Do you want to delete this file? (y/n) "
   read yn
   case $yn in
-    [Yy]* ) ln -sf ~/dotfiles/.gvimrc ~/.gvimrc ;;
+    [Yy]* ) ln -f ~/dotfiles/.gvimrc ~/.gvimrc ;;
     *     ) exit
   esac
 else
   echo "No .gvimrc exist."
-  ln -s ~/dotfiles/.gvimrc ~/.gvimrc;
+  ln ~/dotfiles/.gvimrc ~/.gvimrc;
 fi
 
 # Check for Ag.
