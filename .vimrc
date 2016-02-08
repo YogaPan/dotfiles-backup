@@ -37,11 +37,12 @@ let g:vim_markdown_folding_disabled = 1
 let g:user_emmet_leader_key='<C-E>'
 "let g:user_emmet_expandabbr_key = '<Tab>'
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,eruby EmmetInstall
 
 let g:ackprg = 'ag --vimgrep'
 
 let g:AutoPairs = {'(':')', '[':']', '{':'}', '|':'|', "'":"'", '"':'"', '`':'`'}
+let NERDSpaceDelims=1
 
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
@@ -75,6 +76,7 @@ nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 set ruler
 set cursorline
 set number
+set relativenumber
 
 set shiftwidth=4
 set tabstop=4
@@ -83,6 +85,7 @@ set autoindent
 set smartindent
 set cindent
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype sh setlocal ts=2 sts=2 sw=2
