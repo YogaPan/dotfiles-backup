@@ -16,6 +16,7 @@ Plugin 'rking/ag.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'junegunn/seoul256.vim'
+Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 call vundle#end()            " required
@@ -55,9 +56,11 @@ nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterRevertHunk
 nmap <Leader>hv <Plug>GitGutterPreviewHunk
 
-colorscheme seoul256
-let g:seoul256_background = 233
-colo seoul256
+" colorscheme seoul256
+" let g:seoul256_background = 233
+" colo seoul256
+colorscheme hybrid_material
+let g:airline_theme = "hybrid"
 
 syntax on               " syntax highlighting
 set encoding=utf-8
@@ -113,3 +116,13 @@ function! Expander()
 endfunction
 
 inoremap <expr> <CR> Expander()
+
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+"set dictionary="/usr/dict/words"
