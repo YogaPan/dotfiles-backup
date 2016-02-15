@@ -42,7 +42,7 @@ autocmd FileType html,css,eruby EmmetInstall
 
 let g:ackprg = 'ag --vimgrep'
 
-let g:AutoPairs = {'(':')', '[':']', '{':'}', '|':'|', "'":"'", '"':'"', '`':'`'}
+let g:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`'}
 let NERDSpaceDelims=1
 
 let g:multi_cursor_next_key='<C-n>'
@@ -56,11 +56,12 @@ nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterRevertHunk
 nmap <Leader>hv <Plug>GitGutterPreviewHunk
 
-" colorscheme seoul256
-" let g:seoul256_background = 233
-" colo seoul256
-colorscheme hybrid_material
-let g:airline_theme = "hybrid"
+colorscheme seoul256
+let g:seoul256_background = 233
+colo seoul256
+" colorscheme hybrid_material
+" colorscheme hybrid_reverse
+" let g:airline_theme = "hybrid"
 
 syntax on               " syntax highlighting
 set encoding=utf-8
@@ -87,6 +88,8 @@ set expandtab
 set autoindent
 set smartindent
 set cindent
+autocmd Filetype c setlocal ts=8 sts=8 sw=8
+autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
@@ -126,3 +129,6 @@ function! Tab_Or_Complete()
 endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 "set dictionary="/usr/dict/words"
+
+nmap <leader>c :find %:t:r.c<CR>
+nmap <leader>h :find %:t:r.h<CR>
