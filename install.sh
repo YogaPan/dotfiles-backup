@@ -16,12 +16,23 @@
 #   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 # fi
 
+echo "Update all remote package sources.."
+sudo apt-get update
+
 # Install git.
 echo -n "Checking for git: "
 if ! command -v git; then
-  echo "git not exist"
+  echo "git not exists"
   # brew install git
   sudo apt-get install git
+fi
+
+# Install zsh.
+echo -n "Checking for zsh: "
+if ! command -v zsh; then
+  echo "No zsh exists"
+  # brew install zsh
+  sudo apt-get install zsh
 fi
 
 # Install Oh-My-Zsh.
