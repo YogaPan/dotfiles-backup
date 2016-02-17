@@ -32,7 +32,6 @@ if [ -e ~/.zshrc ]; then
   echo -n ".zshrc existed. Do you want to delete this file? (y/n) "; read yn
   case $yn in
     [Yy]* ) ln -f ~/dotfiles/.zshrc ~/.zshrc ;;
-    *     ) exit
   esac
 else
   echo "No .zshrc file."
@@ -74,6 +73,18 @@ echo -n "checking for qemu: "
 if ! command -v qemu-system-x86_64; then
   echo "qemu not exists"
   sudo apt-get install qemu
+fi
+
+# Install mail-utils.
+echo -n "Checking for mutt: "
+if ! command -v mutt; then
+  echo "mutt not exists"
+  sudo apt-get install mutt
+fi
+echo -n "Checking for esmtp"
+if ! command -v esmtp; then
+  echo "esmtp not exists"
+  sudo apt-get install esmtp
 fi
 
 # Check for Ag.
