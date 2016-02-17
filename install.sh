@@ -96,6 +96,22 @@ if ! command -v zsh; then
   sudo apt-get install zsh
 fi
 
+# Install Oh-My-Zsh.
+echo -n "Checking for Oh-My-Zsh: "
+if [ -e ~/.oh-my-zsh/oh-my-zsh.sh]; then
+  echo "~/.oh-my-zsh"
+else
+  git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+fi
+
+# Install Zsh-Syntax-Hightlighting.
+echo -n "Checking for zsh-syntax-hightlighting"
+if [ -e ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
+  echo "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+else
+  git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+fi
+
 # Check .zshrc file.
 echo -n "Checking for .zshrc: "
 if [ -e ~/.zshrc ]; then
@@ -111,19 +127,4 @@ else
   ln ~/dotfiles/.zshrc ~/.zshrc
 fi
 
-# Install Zsh-Syntax-Hightlighting.
-echo -n "Checking for zsh-syntax-hightlighting"
-if [ -e ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
-  echo "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-else
-  git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-fi
-
-# Install Oh-My-Zsh.
-echo -n "Checking for Oh-My-Zsh: "
-if [ -e ~/.oh-my-zsh/oh-my-zsh.sh]; then
-  echo "~/.oh-my-zsh"
-else
-  # sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-fi
+chsh -s /bin/zsh
