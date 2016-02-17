@@ -2,12 +2,21 @@
 #
 # Install My settings into computer.
 
+# Install git.
+echo -n "Checking for git: "
+if ! command -v git; then
+  echo "git not exist"
+  # brew install git
+  sudo apt-get install git
+fi
+
 # Install Oh-My-Zsh.
 echo -n "Checking for Oh-My-Zsh: "
 if [ -e ~/.oh-my-zsh/ ]; then
   echo "~/.oh-my-zsh"
 else
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  # sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 fi
 
 # Install Zsh-Syntax-Hightlighting.
@@ -41,6 +50,13 @@ else
   echo "No fonts installed."
   git clone https://github.com/powerline/fonts.git ~/fonts
   (cd ~/fonts/ && ./install.sh)
+fi
+
+echo -n "checking for vim: "
+if ! command -v vim; then
+  echo "vim not exist"
+  # brew install vim
+  sudo apt-get install vim
 fi
 
 # Create directory for vim backup and swap files.
@@ -77,7 +93,8 @@ vim +PluginInstall +qall
 echo -n "Checking for Ag: "
 if ! command -v ag; then
   echo "Ag not exist."
-  brew install the_silver_searcher
+  # brew install the_silver_searcher
+  sudo apt-get install silversearcher-ag
 fi
 
 # Check for .gemrc.
