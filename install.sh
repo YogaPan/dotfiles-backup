@@ -51,8 +51,8 @@ else
   (cd ~/fonts/ && ./install.sh)
 fi
 
-echo "Update all remote package sources.."
-sudo apt-get update
+echo "Update all remote package sources..."
+sudo apt-get update > /dev/null 2>&1
 
 # Install build-essential.
 echo -n "checking for build-essential: "
@@ -81,7 +81,7 @@ if ! command -v mutt; then
   echo "mutt not exists"
   sudo apt-get install mutt
 fi
-echo -n "Checking for esmtp"
+echo -n "Checking for esmtp: "
 if ! command -v esmtp; then
   echo "esmtp not exists"
   sudo apt-get install esmtp
