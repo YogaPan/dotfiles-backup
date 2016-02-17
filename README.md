@@ -5,7 +5,6 @@
 $ git clone https://github.com/YogaPan/dotfiles.git ~/dotfiles
 $ cd ~/dotfiles && ./install.sh
 ```
-
 ## Setting your git config
 ```sh
 $ git config --global -l
