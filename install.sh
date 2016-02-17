@@ -29,8 +29,7 @@ fi
 echo -n "Checking for .zshrc: "
 if [ -e ~/.zshrc ]; then
   echo "~/.zshrc"
-  echo -n ".zshrc existed. Do you want to delete this file? (y/n) "
-  read yn
+  echo -n ".zshrc existed. Do you want to delete this file? (y/n) "; read yn
   case $yn in
     [Yy]* ) ln -f ~/dotfiles/.zshrc ~/.zshrc ;;
     *     ) exit
@@ -72,7 +71,7 @@ fi
 
 # Install qemu
 echo -n "checking for qemu: "
-if ! command -v qemu; then
+if ! command -v qemu-system-x86_64; then
   echo "qemu not exists"
   sudo apt-get install qemu
 fi
@@ -96,7 +95,7 @@ fi
 mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
 
 # Use vundle as vim plugin manager.
-echo -n "Check for Vundle: "
+echo -n "Checking for Vundle: "
 if [ -e ~/.vim/bundle/Vundle.vim ]; then
   echo "~/.vim/bundle/Vundle.vim"
 else
@@ -108,8 +107,7 @@ fi
 echo -n "Checking for .vimrc: "
 if [ -e ~/.vimrc ]; then
   echo "~/.vimrc"
-  echo -n ".vimrc existed. Do you want to delete this file? (y/n) "
-  read yn
+  echo -n ".vimrc existed. Do you want to delete this file? (y/n) "; read yn
   case $yn in
     [Yy]* ) ln -f ~/dotfiles/.vimrc ~/.vimrc ;;
     *     ) exit

@@ -86,3 +86,4 @@ export LC_ALL=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias vim="mvim"
+alias qemu="qemu-system-x86_64"
