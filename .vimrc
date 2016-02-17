@@ -80,7 +80,7 @@ nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 set ruler
 set cursorline
 set number
-set relativenumber
+"set relativenumber
 
 set textwidth=80
 
