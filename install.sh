@@ -2,6 +2,20 @@
 #
 # Install My settings into computer.
 
+# Install Xcode.
+# echo -n "Checking for Xcode select: "
+# if ! sh -c "xcode-select -p"; then
+#   sh -c "xcode-select --install"
+#   exit
+# fi
+
+# Install Homebrew.
+# echo -n "Checking for Homebrew: "
+# if ! command -v brew; then
+#   echo "No Homebrew installed."
+#   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# fi
+
 # Install git.
 echo -n "Checking for git: "
 if ! command -v git; then
