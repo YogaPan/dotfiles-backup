@@ -1,92 +1,5 @@
 #!/usr/bin/env bash
-#
 # Install My settings into computer.
-
-# Install Xcode.
-# echo -n "Checking for Xcode select: "
-# if ! sh -c "xcode-select -p"; then
-#   sh -c "xcode-select --install"
-#   exit
-# fi
-
-# Install Homebrew.
-# echo -n "Checking for Homebrew: "
-# if ! command -v brew; then
-#   echo "No Homebrew installed."
-#   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# fi
-
-echo "Update all remote package sources.."
-sudo apt-get update
-
-echo -n "checking for build-essential: "
-if ! command -v gcc; then
-  echo "gcc not exists"
-  sudu apt-get install build-essendtial
-fi
-
-# Install git.
-echo -n "Checking for git: "
-if ! command -v git; then
-  echo "git not exists"
-  # brew install git
-  sudo apt-get install git
-fi
-
-# Install fonts.
-echo -n "Check Source Code font: "
-if [ -e ~/fonts ]; then
-  echo "~/fonts"
-else
-  echo "No fonts installed."
-  git clone https://github.com/powerline/fonts.git ~/fonts
-  (cd ~/fonts/ && ./install.sh)
-fi
-
-echo -n "checking for vim: "
-if ! command -v vim; then
-  echo "vim not exist"
-  # brew install vim
-  sudo apt-get install vim
-fi
-
-# Create directory for vim backup and swap files.
-mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
-
-# Use vundle as vim plugin manager.
-echo -n "Check for Vundle: "
-if [ -e ~/.vim/bundle/Vundle.vim ]; then
-  echo "~/.vim/bundle/Vundle.vim"
-else
-  echo "No vundle installed."
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
-
-# Check for .vimrc.
-echo -n "Checking for .vimrc: "
-if [ -e ~/.vimrc ]; then
-  echo "~/.vimrc"
-  echo -n ".vimrc existed. Do you want to delete this file? (y/n) "
-  read yn
-  case $yn in
-    [Yy]* ) ln -f ~/dotfiles/.vimrc ~/.vimrc ;;
-    *     ) exit
-  esac
-else
-  echo "No .vimrc exist."
-  ln ~/dotfiles/.vimrc ~/.vimrc
-fi
-
-# Install all vim plugins.
-vim +PluginInstall +qall
-
-# Check for Ag.
-echo -n "Checking for Ag: "
-if ! command -v ag; then
-  echo "Ag not exist."
-  # brew install the_silver_searcher
-  sudo apt-get install silversearcher-ag
-fi
 
 # Install zsh.
 echo -n "Checking for zsh: "
@@ -127,4 +40,84 @@ else
   ln ~/dotfiles/.zshrc ~/.zshrc
 fi
 
+echo "Set zsh default"
 chsh -s $(which zsh)
+
+# Install fonts.
+echo -n "Check Source Code font: "
+if [ -e ~/fonts ]; then
+  echo "~/fonts"
+else
+  echo "No fonts installed."
+  git clone https://github.com/powerline/fonts.git ~/fonts
+  (cd ~/fonts/ && ./install.sh)
+fi
+
+echo "Update all remote package sources.."
+sudo apt-get update
+
+# Install build-essential.
+echo -n "checking for build-essential: "
+if ! command -v gcc; then
+  echo "gcc not exists"
+  sudu apt-get install build-essendtial
+fi
+
+# Install pip3
+echo -n "checking for pip3: "
+if ! command -v pip3; then
+  echo "pip3 not exists"
+  sudo apt-get install python3-pip
+fi
+
+# Install qemu
+echo -n "checking for qemu: "
+if ! command -v qemu; then
+  echo "qemu not exists"
+  sudo apt-get install qemu
+fi
+
+# Check for Ag.
+echo -n "Checking for Ag: "
+if ! command -v ag; then
+  echo "Ag not exist."
+  # brew install the_silver_searcher
+  sudo apt-get install silversearcher-ag
+fi
+
+echo -n "checking for vim: "
+if ! command -v vim; then
+  echo "vim not exist"
+  # brew install vim
+  sudo apt-get install vim
+fi
+
+# Create directory for vim backup and swap files.
+mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
+
+# Use vundle as vim plugin manager.
+echo -n "Check for Vundle: "
+if [ -e ~/.vim/bundle/Vundle.vim ]; then
+  echo "~/.vim/bundle/Vundle.vim"
+else
+  echo "No vundle installed."
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
+# Check for .vimrc.
+echo -n "Checking for .vimrc: "
+if [ -e ~/.vimrc ]; then
+  echo "~/.vimrc"
+  echo -n ".vimrc existed. Do you want to delete this file? (y/n) "
+  read yn
+  case $yn in
+    [Yy]* ) ln -f ~/dotfiles/.vimrc ~/.vimrc ;;
+    *     ) exit
+  esac
+else
+  echo "No .vimrc exist."
+  ln ~/dotfiles/.vimrc ~/.vimrc
+fi
+
+# Install all vim plugins.
+vim +PluginInstall +qall
