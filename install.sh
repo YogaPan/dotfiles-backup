@@ -19,7 +19,7 @@
 echo "Update all remote package sources.."
 sudo apt-get update
 
-echo "checking for build-essential: "
+echo -n "checking for build-essential: "
 if ! command -v gcc; then
   echo "gcc not exists"
   sudu apt-get install build-essendtial
@@ -31,46 +31,6 @@ if ! command -v git; then
   echo "git not exists"
   # brew install git
   sudo apt-get install git
-fi
-
-# Install zsh.
-echo -n "Checking for zsh: "
-if ! command -v zsh; then
-  echo "No zsh exists"
-  # brew install zsh
-  sudo apt-get install zsh
-fi
-
-# Install Oh-My-Zsh.
-echo -n "Checking for Oh-My-Zsh: "
-if [ -e ~/.oh-my-zsh/ ]; then
-  echo "~/.oh-my-zsh"
-else
-  # sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-fi
-
-# Install Zsh-Syntax-Hightlighting.
-echo -n "Checking for zsh-syntax-hightlighting"
-if [ -e ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
-  echo "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-else
-  git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-fi
-
-# Check .zshrc file.
-echo -n "Checking for .zshrc: "
-if [ -e ~/.zshrc ]; then
-  echo "~/.zshrc"
-  echo -n ".zshrc existed. Do you want to delete this file? (y/n) "
-  read yn
-  case $yn in
-    [Yy]* ) ln -f ~/dotfiles/.zshrc ~/.zshrc ;;
-    *     ) exit
-  esac
-else
-  echo "No .zshrc file."
-  ln ~/dotfiles/.zshrc ~/.zshrc
 fi
 
 # Install fonts.
@@ -128,20 +88,42 @@ if ! command -v ag; then
   sudo apt-get install silversearcher-ag
 fi
 
-# Check for .gemrc.
-echo -n "Checking for .gemrc: "
-if [ -e ~/.gemrc ]; then
-  echo "~/.gemrc"
-  echo -n ".gemrc existed. Do you want to delete this file? (y/n) "
+# Install zsh.
+echo -n "Checking for zsh: "
+if ! command -v zsh; then
+  echo "No zsh exists"
+  # brew install zsh
+  sudo apt-get install zsh
+fi
+
+# Check .zshrc file.
+echo -n "Checking for .zshrc: "
+if [ -e ~/.zshrc ]; then
+  echo "~/.zshrc"
+  echo -n ".zshrc existed. Do you want to delete this file? (y/n) "
   read yn
   case $yn in
-    [Yy]* ) ln -f ~/dotfiles/.gemrc ~/.gemrc ;;
+    [Yy]* ) ln -f ~/dotfiles/.zshrc ~/.zshrc ;;
     *     ) exit
   esac
 else
-  echo "No .gemrc exist."
-  ln ~/dotfiles/.gemrc ~/.gemrc;
+  echo "No .zshrc file."
+  ln ~/dotfiles/.zshrc ~/.zshrc
 fi
 
-# Every things is done.
-echo "done"
+# Install Zsh-Syntax-Hightlighting.
+echo -n "Checking for zsh-syntax-hightlighting"
+if [ -e ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
+  echo "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+else
+  git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+fi
+
+# Install Oh-My-Zsh.
+echo -n "Checking for Oh-My-Zsh: "
+if [ -e ~/.oh-my-zsh/ ]; then
+  echo "~/.oh-my-zsh"
+else
+  # sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+fi
