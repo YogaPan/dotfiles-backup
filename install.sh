@@ -127,4 +127,4 @@ else
   ln ~/dotfiles/.zshrc ~/.zshrc
 fi
 
-chsh -s /bin/zsh
+chsh -s $(which zsh)
