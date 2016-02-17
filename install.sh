@@ -121,7 +121,7 @@ fi
 
 # Install Oh-My-Zsh.
 echo -n "Checking for Oh-My-Zsh: "
-if [ -e ~/.oh-my-zsh/ ]; then
+if [ -e ~/.oh-my-zsh/oh-my-zsh.sh]; then
   echo "~/.oh-my-zsh"
 else
   # sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
