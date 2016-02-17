@@ -2,20 +2,6 @@
 #
 # Install My settings into computer.
 
-# Install Xcode.
-echo -n "Checking for Xcode select: "
-if ! sh -c "xcode-select -p"; then
-  sh -c "xcode-select --install"
-  exit
-fi
-
-# Install Homebrew.
-echo -n "Checking for Homebrew: "
-if ! command -v brew; then
-  echo "No Homebrew installed."
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
 # Install Oh-My-Zsh.
 echo -n "Checking for Oh-My-Zsh: "
 if [ -e ~/.oh-my-zsh/ ]; then
@@ -54,9 +40,7 @@ if [ -e ~/fonts ]; then
 else
   echo "No fonts installed."
   git clone https://github.com/powerline/fonts.git ~/fonts
-  cd ~/fonts/
-  ./install.sh
-  cd -
+  (cd ~/fonts/ && ./install.sh)
 fi
 
 # Create directory for vim backup and swap files.
@@ -69,13 +53,6 @@ if [ -e ~/.vim/bundle/Vundle.vim ]; then
 else
   echo "No vundle installed."
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
-
-# Install macvim.
-echo -n "Checking for macvim: "
-if ! command -v mvim; then
-  echo "No macvim installed."
-  brew install macvim
 fi
 
 # Check for .vimrc.
@@ -95,21 +72,6 @@ fi
 
 # Install all vim plugins.
 vim +PluginInstall +qall
-
-# Check for .gvimrc.
-echo -n "Checking for .gvimrc: "
-if [ -e ~/.gvimrc ]; then
-  echo "~/.gvimrc"
-  echo -n ".gvimrc existed. Do you want to delete this file? (y/n) "
-  read yn
-  case $yn in
-    [Yy]* ) ln -f ~/dotfiles/.gvimrc ~/.gvimrc ;;
-    *     ) exit
-  esac
-else
-  echo "No .gvimrc exist."
-  ln ~/dotfiles/.gvimrc ~/.gvimrc;
-fi
 
 # Check for Ag.
 echo -n "Checking for Ag: "
