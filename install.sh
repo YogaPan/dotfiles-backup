@@ -19,6 +19,12 @@
 echo "Update all remote package sources.."
 sudo apt-get update
 
+echo "checking for build-essential: "
+if ! command -v gcc; then
+  echo "gcc not exists"
+  sudu apt-get install build-essendtial
+fi
+
 # Install git.
 echo -n "Checking for git: "
 if ! command -v git; then
