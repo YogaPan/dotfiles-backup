@@ -98,7 +98,7 @@ fi
 
 # Install Oh-My-Zsh.
 echo -n "Checking for Oh-My-Zsh: "
-if [ -e ~/.oh-my-zsh/oh-my-zsh.sh]; then
+if [ -e ~/.oh-my-zsh/oh-my-zsh.sh ]; then
   echo "~/.oh-my-zsh"
 else
   git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
