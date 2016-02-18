@@ -60,14 +60,14 @@ nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterRevertHunk
 nmap <Leader>hv <Plug>GitGutterPreviewHunk
 
-" colorscheme solarized
-" set background=dark
+colorscheme solarized
+set background=dark
 " colorscheme seoul256
 " let g:seoul256_background = 233
 " colo seoul256
 " colorscheme hybrid_material
-colorscheme hybrid_reverse
-let g:airline_theme = "hybrid"
+" colorscheme hybrid_reverse
+" let g:airline_theme = "hybrid"
 
 syntax on               " syntax highlighting
 set encoding=utf-8
