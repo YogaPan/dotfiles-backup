@@ -1,6 +1,38 @@
 [user]
     name = yourname
 	email = username@gmail.com
-
 [credential]
 	helper = store
+[alias]
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+	s = status -s
+
+    a = add
+    aa = add -A
+    ap = add -p
+
+    d = diff
+    ds = diff --stat
+    dc = diff --cached
+
+    cm = commit -m
+    cv = commit -v
+    ca = commit --amend -v
+
+	b = branch
+	co = checkout
+    cob = checkout -b
+
+    rao = remote add origin
+    rau = remote add upstream
+
+    po = push origin
+
+    fo = fetch origin
+    fu = fetch upstream
+
+    m = merge
+    mv = merge --no-ff
+
+    # list aliases
+    la = "!git config -l | grep alias | cut -c 7-"
