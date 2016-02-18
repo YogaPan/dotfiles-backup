@@ -96,7 +96,7 @@ set expandtab
 set autoindent
 set smartindent
 set cindent
-autocmd Filetype c setlocal ts=8 noexpandtab
+autocmd Filetype c setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd Filetype cpp setlocal ts=8 sts=8 sw=8
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype gitcommit setlocal ts=4 sts=4 sw=4
