@@ -20,11 +20,11 @@ if [ -e ~/.vimrc ]; then
   echo "~/.vimrc"
   echo -n ".vimrc existed. Do you want to delete this file? (y/n) "; read yn
   case $yn in
-    [Yy]* ) ln -f ~/dotfiles/.vimrc ~/.vimrc ;;
+    [Yy]* ) cp ~/dotfiles/.vimrc ~/.vimrc ;;
   esac
 else
   echo "No .vimrc exist."
-  ln ~/dotfiles/.vimrc ~/.vimrc
+  cp ~/dotfiles/.vimrc ~/.vimrc
 fi
 
 # Install all vim plugins.
