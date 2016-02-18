@@ -32,7 +32,6 @@
     fu = fetch upstream
 
     m = merge
-    mv = merge --no-ff
 
     # list aliases
     la = "!git config -l | grep alias | cut -c 7-"
