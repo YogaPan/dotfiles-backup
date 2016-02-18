@@ -16,6 +16,7 @@ Plugin 'rking/ag.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'junegunn/seoul256.vim'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
@@ -56,9 +57,11 @@ nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterRevertHunk
 nmap <Leader>hv <Plug>GitGutterPreviewHunk
 
-colorscheme seoul256
-let g:seoul256_background = 233
-colo seoul256
+colorscheme solarized
+set background=dark
+" colorscheme seoul256
+" let g:seoul256_background = 233
+" colo seoul256
 " colorscheme hybrid_material
 " colorscheme hybrid_reverse
 " let g:airline_theme = "hybrid"
