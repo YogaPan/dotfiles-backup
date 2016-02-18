@@ -1,5 +1,5 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -20,8 +20,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()
+filetype plugin indent on
 
 let mapleader = ","
 
@@ -69,16 +69,17 @@ set background=dark
 " colorscheme hybrid_reverse
 " let g:airline_theme = "hybrid"
 
-syntax on               " syntax highlighting
+syntax on
 set encoding=utf-8
 set autoread
-set backspace=2         " backspace in insert mode works like normal editor
-"set nobackup            " get rid of anoying ~file
+set backspace=2       " backspace in insert mode works like normal editor
+"set nobackup         " get rid of anoying ~file
 set backupdir=~/.vim/backup_files//
 set directory=~/.vim/swap_files//
 set undodir=~/.vim/undo_files//
 
 set ignorecase
+set smartcase
 set hlsearch
 set incsearch
 nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
@@ -90,14 +91,16 @@ set number
 
 set textwidth=80
 
-set shiftwidth=4
-set tabstop=4
-set expandtab
 set autoindent
 set smartindent
 set cindent
+
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set expandtab
 autocmd Filetype c setlocal ts=8 sts=8 sw=8 noexpandtab
-autocmd Filetype cpp setlocal ts=8 sts=8 sw=8
+autocmd Filetype cpp setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype gitcommit setlocal ts=4 sts=4 sw=4
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
@@ -108,7 +111,7 @@ autocmd Filetype sh setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 
 "autocmd BufWrite * :%s/\s\+$//
-noremap <leader><space> :%s/\s\+$//<CR>
+noremap <leader> <space> :%s/\s\+$//<CR>
 
 function! Expander()
   let line   = getline(".")
@@ -140,5 +143,5 @@ endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 "set dictionary="/usr/dict/words"
 
-nmap <leader>c :find %:t:r.c<CR>
-nmap <leader>h :find %:t:r.h<CR>
+nmap <leader> c :find %:t:r.c <CR>
+nmap <leader> h :find %:t:r.h <CR>
