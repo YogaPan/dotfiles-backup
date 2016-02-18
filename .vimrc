@@ -33,6 +33,9 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
+" let g:airline#extensions#whitespace#checks = ['indent', 'trailing', 'long', 'mixed-indent-file']
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 let g:vim_markdown_folding_disabled = 1
 
@@ -57,14 +60,14 @@ nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterRevertHunk
 nmap <Leader>hv <Plug>GitGutterPreviewHunk
 
-colorscheme solarized
-set background=dark
+" colorscheme solarized
+" set background=dark
 " colorscheme seoul256
 " let g:seoul256_background = 233
 " colo seoul256
 " colorscheme hybrid_material
-" colorscheme hybrid_reverse
-" let g:airline_theme = "hybrid"
+colorscheme hybrid_reverse
+let g:airline_theme = "hybrid"
 
 syntax on               " syntax highlighting
 set encoding=utf-8
@@ -93,7 +96,7 @@ set expandtab
 set autoindent
 set smartindent
 set cindent
-autocmd Filetype c setlocal ts=8 sts=8 sw=8
+autocmd Filetype c setlocal ts=8 noexpandtab
 autocmd Filetype cpp setlocal ts=8 sts=8 sw=8
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype gitcommit setlocal ts=4 sts=4 sw=4
