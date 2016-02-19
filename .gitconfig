@@ -17,6 +17,7 @@
 
     cm = commit -m
     cv = commit -v
+    cvs = commit -v -s
     ca = commit --amend -v
 
     b = branch
