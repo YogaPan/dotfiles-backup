@@ -1,11 +1,11 @@
 [user]
     name = yourname
-	email = username@gmail.com
+    email = username@gmail.com
 [credential]
-	helper = store
+    helper = store
 [alias]
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-	s = status -s
+    s = status -s
 
     a = add
     aa = add -A
@@ -19,11 +19,12 @@
     cv = commit -v
     ca = commit --amend -v
 
-	b = branch
-    ba = branch -a
+    b = branch
     bd = branch -d
+    ba = branch -a
+    br = branch -r
 
-	co = checkout
+    co = checkout
     cob = checkout -b
 
     rao = remote add origin
