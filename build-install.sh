@@ -8,7 +8,3 @@ sudo apt-get install mutt esmtp git-email
 
 # pip3
 sudo apt-get install python3-pip
-
-# Install qemu
-sudo apt-get install qemu
-
