@@ -1,4 +1,5 @@
 set sendmail="/usr/bin/esmtp"
+set charset = UTF-8
 set envelope_from=yes
 set from="yourname <username@gmail.com>"
 set use_from=yes
