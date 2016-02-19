@@ -21,6 +21,7 @@
     ca = commit --amend -v
 
     b = branch
+    bm = branch -m
     bd = branch -d
     ba = branch -a
     br = branch -r
@@ -28,6 +29,8 @@
     co = checkout
     cob = checkout -b
 
+    rv = remote -v
+    rr = remote rename
     rao = remote add origin
     rau = remote add upstream
 
