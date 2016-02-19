@@ -20,6 +20,9 @@
     ca = commit --amend -v
 
 	b = branch
+    ba = branch -a
+    bd = branch -d
+
 	co = checkout
     cob = checkout -b
 
