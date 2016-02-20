@@ -112,8 +112,8 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set expandtab
-au BufNewFile,BufRead *.ejs set filetype=html
 let g:html_indent_inctags = "html,body,head,tbody"
+autocmd BufNewFile,BufRead *.ejs set filetype=html
 autocmd Filetype c setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd Filetype cpp setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
