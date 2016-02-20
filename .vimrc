@@ -112,6 +112,8 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set expandtab
+au BufNewFile,BufRead *.ejs set filetype=html
+let g:html_indent_inctags = "html,body,head,tbody"
 autocmd Filetype c setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd Filetype cpp setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
@@ -122,8 +124,7 @@ autocmd Filetype css setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype sh setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-
-au BufNewFile,BufRead *.ejs set filetype=html
+autocmd FileType vim setlocal ts=2 sts=2 sw=2
 
 "autocmd BufWrite * :%s/\s\+$//
 noremap <leader><space> :%s/\s\+$//<CR>
@@ -137,7 +138,7 @@ function! Expander()
 
   if first ==# ">"
     if second ==# "<" && third ==# "/"
-      return "\<CR>\<C-o>==\<C-o>O"
+      return "\<CR>\<C-o>O"
     else
       return "\<CR>"
     endif
@@ -146,7 +147,7 @@ function! Expander()
   endif
 endfunction
 
-inoremap <expr> <CR> Expander()
+inoremap <CR> <C-R>=Expander()<CR>
 
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
