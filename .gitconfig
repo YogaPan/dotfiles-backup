@@ -43,3 +43,5 @@
 
     # list aliases
     la = "!git config -l | grep alias | cut -c 7-"
+[merge]
+	tool = vimdiff
