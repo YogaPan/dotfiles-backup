@@ -56,6 +56,10 @@ plugins=(git virtualenv zsh-syntax-highlighting)
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export EDITOR=vim
 # export MANPATH="/usr/local/man:$MANPATH"
+#
+# You may want to correct your time.
+# just type `sudo ntpdate -s time.stdtime.gov.tw`
+export TZ='Asia/Taipei'
 
 source $ZSH/oh-my-zsh.sh
 
