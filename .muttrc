@@ -1,6 +1,7 @@
-set sendmail="/usr/bin/esmtp"
+set sendmail = "/usr/bin/esmtp"
 set charset = UTF-8
-set envelope_from=yes
-set from="yourname <username@gmail.com>"
-set use_from=yes
-set edit_headers=yes
+set edit_headers = yes
+set envelope_from = yes
+set realname = "YogaPan"
+set from = "yourname <username@gmail.com>"
+set use_from = yes
