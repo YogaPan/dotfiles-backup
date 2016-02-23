@@ -1,7 +1,29 @@
-set sendmail = "/usr/bin/esmtp"
-set charset = UTF-8
-set edit_headers = yes
-set envelope_from = yes
-set realname = "yourname"
-set from = "<username@gmail.com>"
-set use_from = yes
+set imap_user = "username@gmail.com"
+set imap_pass = "password"
+
+set smtp_url = "smtp://username@smtp.gmail.com:587/"
+set smtp_pass = "password"
+set from = "username@gmail.com"
+set realname = "name"
+
+set folder = "imaps://imap.googlemail.com:993"
+set spoolfile = "+INBOX"
+set postponed="+[Gmail]/Drafts"
+
+# set pop_host="pops://godhand1234567:godhand321@pop.gmail.com:995"
+# set pop_last
+
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certificates
+
+set move = no
+
+set sort=threads
+set sort_aux=last-date-received
+set imap_check_subscribed
+
+ignore "Authentication-Results:"
+ignore "DomainKey-Signature:"
+ignore "DKIM-Signature:"
+hdr_order Date From To Cc
