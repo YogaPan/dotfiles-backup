@@ -116,6 +116,8 @@ let g:html_indent_inctags = "html,body,head,tbody"
 autocmd BufNewFile,BufRead *.ejs set filetype=html
 autocmd Filetype c setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd Filetype cpp setlocal ts=8 sts=8 sw=8 noexpandtab
+autocmd FileType text setlocal ts=8 sts=8 sw=8
+autocmd Filetype php setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype gitcommit setlocal ts=4 sts=4 sw=4
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
@@ -125,7 +127,6 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype sh setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd FileType vim setlocal ts=2 sts=2 sw=2
-autocmd FileType text setlocal ts=8 sts=8 sw=8
 
 "autocmd BufWrite * :%s/\s\+$//
 noremap <leader><space> :%s/\s\+$//<CR>
