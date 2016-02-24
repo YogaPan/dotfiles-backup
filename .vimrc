@@ -19,8 +19,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'kristijanhusak/vim-hybrid-material'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
 call vundle#end()
 filetype plugin indent on
 
@@ -37,8 +35,6 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
 " let g:airline#extensions#whitespace#checks = ['indent', 'trailing', 'long', 'mixed-indent-file']
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
-
-let g:vim_markdown_folding_disabled = 1
 
 let g:user_emmet_leader_key='<C-E>'
 "let g:user_emmet_expandabbr_key = '<Tab>'
@@ -113,7 +109,8 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 let g:html_indent_inctags = "html,body,head,tbody"
-autocmd BufNewFile,BufRead *.ejs set filetype=html
+autocmd BufNewFile,BufFilePre,BufRead *.ejs set filetype=html
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 autocmd Filetype c setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd Filetype cpp setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd FileType text setlocal ts=8 sts=8 sw=8
@@ -160,7 +157,7 @@ function! Tab_Or_Complete()
   endif
 endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
-"set dictionary="/usr/dict/words"
+" set dictionary="/usr/dict/words"
 
 nmap <leader> c :find %:t:r.c <CR>
 nmap <leader> h :find %:t:r.h <CR>
