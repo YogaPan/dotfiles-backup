@@ -117,6 +117,7 @@ autocmd BufNewFile,BufFilePre,BufRead *.ejs set filetype=html
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 autocmd Filetype c setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd Filetype cpp setlocal ts=8 sts=8 sw=8 noexpandtab
+autocmd FileType perl setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd FileType text setlocal ts=8 sts=8 sw=8
 autocmd Filetype php setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
