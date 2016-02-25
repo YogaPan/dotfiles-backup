@@ -12,6 +12,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-endwise'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'vim-airline/vim-airline'
@@ -50,6 +51,9 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
