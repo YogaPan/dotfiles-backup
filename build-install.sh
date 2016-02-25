@@ -10,5 +10,5 @@ sudo apt-get install mutt esmtp
 # Fancy top.
 sudo apt-get install htop
 
-# pip3
-sudo apt-get install python3-pip
+# pip
+sudo apt-get install python3-pip python-pip
