@@ -23,6 +23,7 @@ $ vim ~/.esmtprc ~/.muttrc ~/.gitconfig
 - [ITerm2](https://www.iterm2.com/)
 - [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 - [Source Code Pro for Powerline](https://github.com/powerline/fonts)
+- [Hack](http://sourcefoundry.org/hack/)
 
 ## vim
 - [vim awesome](http://vimawesome.com/)
