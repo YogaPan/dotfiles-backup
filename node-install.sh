@@ -1,2 +1,4 @@
-git clone https://github.com/nodejs/node ~/node
-(cd ~/node && ./configure && make && sudo make install)
+#!/bin/sh
+
+curl --silent --location https://deb.nodesource.com/setup_5.x | sudo bash -
+sudo apt-get install nodejs
