@@ -1,10 +1,18 @@
 # dotfiles
 
 ## Prepare
+
+### Set your passwd
 ```sh
 $ sudo passwd yourname
+```
+
+### Install newest Git
+```sh
+$ sudo add-apt-repository ppa:git-core/ppa -y
 $ sudo apt-get update
 $ sudo apt-get install git
+$ git --version
 ```
 
 ## How to install
