@@ -20,12 +20,12 @@ $ vim ~/.esmtprc ~/.muttrc ~/.gitconfig
 ```
 
 ## ITerm2 and fonts
-[ITerm2](https://www.iterm2.com/)
-[iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
-[Source Code Pro for Powerline](https://github.com/powerline/fonts)
+- [ITerm2](https://www.iterm2.com/)
+- [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
+- [Source Code Pro for Powerline](https://github.com/powerline/fonts)
 
 ## vim
-[vim awesome](http://vimawesome.com/)
-[vim tips](https://www.cs.swarthmore.edu/help/vim/home.html)
-[vim ide](https://github.com/yangyangwithgnu/use_vim_as_ide)
-[emmet](http://docs.emmet.io/cheat-sheet/)
+- [vim awesome](http://vimawesome.com/)
+- [vim tips](https://www.cs.swarthmore.edu/help/vim/home.html)
+- [vim ide](https://github.com/yangyangwithgnu/use_vim_as_ide)
+- [emmet](http://docs.emmet.io/cheat-sheet/)
