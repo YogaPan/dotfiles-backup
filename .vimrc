@@ -78,12 +78,11 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-
-colorscheme solarized
-set background=dark
-" colorscheme seoul256
-" let g:seoul256_background = 233
-" colo seoul256
+" colorscheme solarized
+" set background=dark
+colorscheme seoul256
+let g:seoul256_background = 234
+colo seoul256
 " colorscheme hybrid_material
 " colorscheme hybrid_reverse
 " let g:airline_theme = "hybrid"
@@ -123,8 +122,9 @@ autocmd BufNewFile,BufFilePre,BufRead *.ejs set filetype=html
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 autocmd Filetype c setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd Filetype cpp setlocal ts=8 sts=8 sw=8 noexpandtab
+autocmd FileType asm setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd FileType perl setlocal ts=8 sts=8 sw=8 noexpandtab
-autocmd FileType text setlocal ts=8 sts=8 sw=8
+autocmd FileType text setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd Filetype php setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype gitcommit setlocal ts=4 sts=4 sw=4
@@ -167,9 +167,9 @@ function! Tab_Or_Complete()
     return "\<Tab>"
   endif
 endfunction
-inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+" inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 " set dictionary="/usr/dict/words"
-" set completeopt-=preview
+set completeopt-=preview
 
 nmap <leader> c :find %:t:r.c <CR>
 nmap <leader> h :find %:t:r.h <CR>
