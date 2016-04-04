@@ -81,7 +81,7 @@ map g# <Plug>(incsearch-nohl-g#)
 " colorscheme solarized
 " set background=dark
 colorscheme seoul256
-let g:seoul256_background = 234
+let g:seoul256_background = 233
 colo seoul256
 " colorscheme hybrid_material
 " colorscheme hybrid_reverse
@@ -113,9 +113,9 @@ set autoindent
 set smartindent
 set cindent
 
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=8
+set tabstop=8
+set softtabstop=8
 set expandtab
 let g:html_indent_inctags = "html,body,head,tbody"
 autocmd BufNewFile,BufFilePre,BufRead *.ejs set filetype=html
