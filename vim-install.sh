@@ -2,6 +2,7 @@
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt-get update
 sudo apt-get install neovim exuberant-ctags silversearcher-ag
+sudo pip3 install neovim
 
 # Create directory for vim backup and swap files.
 mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
