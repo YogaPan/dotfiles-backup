@@ -1,29 +1,27 @@
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'pangloss/vim-javascript'
-Plugin 'tpope/vim-surround'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-endwise'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'kien/ctrlp.vim'
-Plugin 'rking/ag.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'junegunn/seoul256.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'kristijanhusak/vim-hybrid-material'
-call vundle#end()
-filetype plugin indent on
+call plug#begin('~/.vim/plugged')
+Plug 'VundleVim/Vundle.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'haya14busa/incsearch.vim'
+Plug 'mattn/emmet-vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'msanders/snipmate.vim'
+Plug 'tpope/vim-endwise'
+Plug 'junegunn/vim-easy-align'
+Plug 'kien/ctrlp.vim'
+Plug 'rking/ag.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'junegunn/seoul256.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'kristijanhusak/vim-hybrid-material'
+call plug#end()
 
 let mapleader = ","
 
@@ -169,7 +167,7 @@ function! Tab_Or_Complete()
 endfunction
 " inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 " set dictionary="/usr/dict/words"
-set completeopt-=preview
+set completeopt=menu
 
 nmap <leader> c :find %:t:r.c <CR>
 nmap <leader> h :find %:t:r.h <CR>

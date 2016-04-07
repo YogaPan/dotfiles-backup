@@ -24,11 +24,11 @@ if [ -e ~/.zshrc ]; then
   echo "~/.zshrc"
   echo -n ".zshrc existed. Do you want to delete this file? (y/n) "; read yn
   case $yn in
-    [Yy]* ) cp ~/dotfiles/.zshrc ~/.zshrc ;;
+    [Yy]* ) cp .zshrc ~/.zshrc ;;
   esac
 else
   echo "No .zshrc file."
-  cp ~/dotfiles/.zshrc ~/.zshrc
+  cp .zshrc ~/.zshrc
 fi
 
 echo "Set zsh default, need your passwd."

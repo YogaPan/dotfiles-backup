@@ -1,31 +1,28 @@
 # Install vim packages.
+sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt-get update
-sudo apt-get install vim exuberant-ctags silversearcher-ag
+sudo apt-get install neovim exuberant-ctags silversearcher-ag
 
 # Create directory for vim backup and swap files.
 mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
+mkdir -p ~/.config/neovim
 
-# Use vundle as vim plugin manager.
-echo -n "Checking for Vundle: "
-if [ -e ~/.vim/bundle/Vundle.vim ]; then
-  echo "~/.vim/bundle/Vundle.vim"
-else
-  echo "No vundle installed."
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
+# vim-plug
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Check for .vimrc.
 echo -n "Checking for .vimrc: "
-if [ -e ~/.vimrc ]; then
+if [ -e ~/.config/neovim/init.vim ]; then
   echo "~/.vimrc"
   echo -n ".vimrc existed. Do you want to delete this file? (y/n) "; read yn
   case $yn in
-    [Yy]* ) cp ~/dotfiles/.vimrc ~/.vimrc ;;
+    [Yy]* ) cp .vimrc ~/.config/neovim/init.vim ;;
   esac
 else
   echo "No .vimrc exist."
-  cp ~/dotfiles/.vimrc ~/.vimrc
+  cp .vimrc ~/.config/neovim/init.vim
 fi
 
 # Install all vim plugins.
-vim +PluginInstall +qall
+vim +PlugInstall +qall
