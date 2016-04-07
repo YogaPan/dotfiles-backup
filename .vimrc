@@ -11,7 +11,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'haya14busa/incsearch.vim'
 Plug 'mattn/emmet-vim'
 Plug 'Shougo/deoplete.nvim'
-Plug 'msanders/snipmate.vim'
+" Plug 'msanders/snipmate.vim'
 Plug 'tpope/vim-endwise'
 Plug 'junegunn/vim-easy-align'
 Plug 'kien/ctrlp.vim'
@@ -75,6 +75,8 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
+let g:deoplete#enable_at_startup = 1
 
 " colorscheme solarized
 " set background=dark
@@ -158,13 +160,13 @@ endfunction
 
 inoremap <CR> <C-R>=Expander()<CR>
 
-function! Tab_Or_Complete()
-  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-    return "\<C-N>"
-  else
-    return "\<Tab>"
-  endif
-endfunction
+" function! Tab_Or_Complete()
+  " if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    " return "\<C-N>"
+  " else
+    " return "\<Tab>"
+  " endif
+" endfunction
 " inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 " set dictionary="/usr/dict/words"
 set completeopt=menu
