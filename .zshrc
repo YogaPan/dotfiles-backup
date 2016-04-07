@@ -54,7 +54,7 @@ plugins=(git virtualenv zsh-syntax-highlighting)
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export EDITOR=vim
+export EDITOR=nvim
 # export MANPATH="/usr/local/man:$MANPATH"
 #
 # You may want to correct your time.
