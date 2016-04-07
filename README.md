@@ -1,7 +1,5 @@
 # dotfiles
 
-## Prepare
-
 ### Set your passwd
 ```sh
 $ sudo passwd yourname
@@ -34,6 +32,8 @@ $ vim ~/.esmtprc ~/.muttrc ~/.gitconfig
 - [Hack](http://sourcefoundry.org/hack/)
 
 ## vim
+- [neovim](https://github.com/neovim/neovim)
+- [vim plug](https://github.com/junegunn/vim-plug)
 - [vim awesome](http://vimawesome.com/)
 - [vim tips](https://www.cs.swarthmore.edu/help/vim/home.html)
 - [vim ide](https://github.com/yangyangwithgnu/use_vim_as_ide)
