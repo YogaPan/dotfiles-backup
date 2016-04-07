@@ -12,7 +12,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'mattn/emmet-vim'
 " Plug 'Shougo/deoplete.nvim'
 " Plug 'Rip-Rip/clang_complete'
-" Plug 'msanders/snipmate.vim'
+Plug 'msanders/snipmate.vim'
 Plug 'tpope/vim-endwise'
 Plug 'junegunn/vim-easy-align'
 
@@ -84,12 +84,12 @@ let g:deoplete#enable_at_startup = 1
 
 " colorscheme solarized
 " set background=dark
-colorscheme seoul256
-let g:seoul256_background = 233
-colo seoul256
+" colorscheme seoul256
+" let g:seoul256_background = 233
+" colo seoul256
 " colorscheme hybrid_material
-" colorscheme hybrid_reverse
-" let g:airline_theme = "hybrid"
+colorscheme hybrid_reverse
+let g:airline_theme = "hybrid"
 
 syntax on
 set encoding=utf-8
