@@ -1,56 +1,16 @@
 call plug#begin('~/.vim/plugged')
-Plug 'VundleVim/Vundle.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 Plug 'pangloss/vim-javascript'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'haya14busa/incsearch.vim'
-Plug 'mattn/emmet-vim'
-" Plug 'Shougo/deoplete.nvim'
-" Plug 'Rip-Rip/clang_complete'
 Plug 'msanders/snipmate.vim'
-Plug 'tpope/vim-endwise'
+Plug 'vim-scripts/OmniCppComplete'
 Plug 'junegunn/vim-easy-align'
-
-Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'rking/ag.vim'
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/seoul256.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'kristijanhusak/vim-hybrid-material'
 call plug#end()
 
 let mapleader = ","
-
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_working_path_mode = 'ra'
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip,
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#whitespace#checks = ['indent', 'trailing']
-" let g:airline#extensions#whitespace#checks = ['indent', 'trailing', 'long', 'mixed-indent-file']
-let g:airline#extensions#whitespace#mixed_indent_algo = 1
-
-let g:user_emmet_leader_key='<C-E>'
-"let g:user_emmet_expandabbr_key = '<Tab>'
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,eruby EmmetInstall
-
-let g:ackprg = 'ag --vimgrep'
-
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-map <F5> :NERDTreeToggle<CR>
 
 let g:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`'}
 let NERDSpaceDelims=1
@@ -63,35 +23,8 @@ let g:multi_cursor_quit_key='<Esc>'
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
-nmap <Leader>ha <Plug>GitGutterStageHunk
-nmap <Leader>hu <Plug>GitGutterRevertHunk
-nmap <Leader>hv <Plug>GitGutterPreviewHunk
-
-let g:incsearch#auto_nohlsearch = 1
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-
-let g:deoplete#enable_at_startup = 1
-
-" colorscheme solarized
-" set background=dark
-" colorscheme seoul256
-" let g:seoul256_background = 233
-" colo seoul256
-" colorscheme hybrid_material
-colorscheme hybrid_reverse
-let g:airline_theme = "hybrid"
-
 syntax on
+colorscheme elflord
 set encoding=utf-8
 set autoread
 set backspace=2       " backspace in insert mode works like normal editor
@@ -161,19 +94,10 @@ function! Expander()
     return "\<CR>"
   endif
 endfunction
-
 inoremap <CR> <C-R>=Expander()<CR>
-
-" function! Tab_Or_Complete()
-  " if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-    " return "\<C-N>"
-  " else
-    " return "\<Tab>"
-  " endif
-" endfunction
-" inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 " set dictionary="/usr/dict/words"
-set completeopt=menu
+set completeopt=longest,menuone
 
-nmap <leader> c :find %:t:r.c <CR>
-nmap <leader> h :find %:t:r.h <CR>
+nmap <leader>c :find %:t:r.c <CR>
+nmap <leader>h :find %:t:r.h <CR>
+nnoremap <F9> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
