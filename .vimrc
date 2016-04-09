@@ -41,6 +41,7 @@ nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 
 set ruler
 set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
 set number
 "set relativenumber
 
