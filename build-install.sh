@@ -6,6 +6,10 @@ sudo apt-get install gdb valgrind
 sudo apt-get install libssl-dev libncurses5-dev
 sudo apt-get install software-properties-common
 
+# for perf
+sudo apt-get install linux-tools-common
+sudo apt-get install linux-tools-`uname -r` linux-cloud-tools-`uname -r`
+
 # Install mail-utils.
 sudo apt-get install mutt esmtp
 
