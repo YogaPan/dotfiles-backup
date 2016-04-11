@@ -3,7 +3,7 @@ Plug 'pangloss/vim-javascript'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'msanders/snipmate.vim'
 Plug 'vim-scripts/OmniCppComplete'
@@ -42,7 +42,7 @@ nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 set ruler
 set cursorline
 hi CursorLine term=bold cterm=bold guibg=Grey40
-set number
+" set number
 "set relativenumber
 
 set textwidth=80
