@@ -23,4 +23,4 @@ else
 fi
 
 # Install all vim plugins.
-nvim +PlugInstall +qall
+vim +PlugInstall +qall
