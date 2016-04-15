@@ -8,6 +8,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'msanders/snipmate.vim'
 Plug 'vim-scripts/OmniCppComplete'
 Plug 'junegunn/vim-easy-align'
+Plug 'haya14busa/incsearch.vim'
 call plug#end()
 
 let mapleader = ","
@@ -19,6 +20,11 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+let g:incsearch#auto_nohlsearch = 1
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
