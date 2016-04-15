@@ -6,6 +6,7 @@ sudo apt-get install gcc g++ make cmake
 sudo apt-get install gdb valgrind
 sudo apt-get install libssl-dev libncurses5-dev
 sudo apt-get install software-properties-common
+sudo apt-get install apache2-utils
 
 # For perf
 sudo apt-get install linux-tools-common
