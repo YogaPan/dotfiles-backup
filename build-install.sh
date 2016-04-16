@@ -6,7 +6,6 @@ sudo apt-get install gcc g++ make cmake
 sudo apt-get install gdb valgrind
 sudo apt-get install libssl-dev libncurses5-dev
 sudo apt-get install software-properties-common
-sudo apt-get install apache2-utils
 
 # For perf
 sudo apt-get install linux-tools-common
@@ -29,6 +28,10 @@ sudo apt-get install gnuplot
 # pip
 sudo apt-get install python-dev python3-dev python-pip python3-pip
 
-# Python web
+# Web Tools
 sudo pip3 install requests
 sudo pip3 install django
+
+sudo pip3 install httpie
+sudo apt-get install nmap
+sudo apt-get install apache2-utils
