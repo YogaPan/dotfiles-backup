@@ -29,9 +29,10 @@ sudo apt-get install gnuplot
 sudo apt-get install python-dev python3-dev python-pip python3-pip
 
 # Web Tools
-sudo pip3 install requests
-sudo pip3 install django
-
-sudo pip3 install httpie
 sudo apt-get install nmap
 sudo apt-get install apache2-utils
+sudo apt-get install vsftpd
+
+sudo pip3 install requests
+sudo pip3 install django
+sudo pip3 install httpie
