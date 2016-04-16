@@ -4,6 +4,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
+Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'msanders/snipmate.vim'
 Plug 'vim-scripts/OmniCppComplete'
@@ -81,7 +82,9 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd FileType vim setlocal ts=2 sts=2 sw=2
 
 "autocmd BufWrite * :%s/\s\+$//
-noremap <leader><space> :%s/\s\+$//<CR>
+noremap <leader><space> :%s/\s\+$//<CR>:nohl<Bar>:echo<CR>
+" noremap <leader>o :%s/) {\n\(\_s*.\+\)\n\_s*}\n/)\r\1/g<CR>:nohl<Bar>:echo<CR>
+noremap <leader>o :%s/) {\n\(\_s*.\+\)\n\_s*}\(\n\\|\_s*\(else\)\_s*{\(\n.\+\)\n\(\_s*\)}\)/)\r\1\r\5\3\4/g<CR>
 set pastetoggle=<F10>
 
 function! Expander()
@@ -102,6 +105,7 @@ function! Expander()
   endif
 endfunction
 inoremap <CR> <C-R>=Expander()<CR>
+
 " set dictionary="/usr/dict/words"
 set completeopt=longest,menuone
 
