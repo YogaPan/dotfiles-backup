@@ -35,6 +35,7 @@ $ vim ~/.esmtprc ~/.muttrc ~/.gitconfig
 - [neovim](https://github.com/neovim/neovim)
 - [vim plug](https://github.com/junegunn/vim-plug)
 - [vim awesome](http://vimawesome.com/)
+- [Basic vim tips](http://bencrowder.net/files/vim-fu/)
 - [vim tips](https://www.cs.swarthmore.edu/help/vim/home.html)
 - [vim ide](https://github.com/yangyangwithgnu/use_vim_as_ide)
 - [emmet](http://docs.emmet.io/cheat-sheet/)
