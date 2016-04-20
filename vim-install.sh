@@ -1,8 +1,9 @@
 # Install vim packages.
 sudo apt-get update
-sudo apt-get install vim exuberant-ctags
+sudo apt-get install vim exuberant-ctags -y
 
 # Create directory for vim backup and swap files.
+sudo rm -rf ~/.vim
 mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
 
 # vim-plug

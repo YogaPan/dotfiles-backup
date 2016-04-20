@@ -1,6 +1,6 @@
 # Install zsh.
 sudo apt-get update
-sudo apt-get install zsh
+sudo apt-get install zsh -y
 
 # Install Oh-My-Zsh.
 echo -n "Checking for Oh-My-Zsh: "

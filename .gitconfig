@@ -1,5 +1,5 @@
 [user]
-    name = yourname
+    name = username
     email = username@gmail.com
 [credential]
     helper = store
