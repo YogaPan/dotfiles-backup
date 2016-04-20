@@ -7,6 +7,7 @@ $ sudo passwd yourname
 
 ### Install newest Git
 ```sh
+$ sudo apt-get install software-properties-common
 $ sudo add-apt-repository ppa:git-core/ppa -y
 $ sudo apt-get update
 $ sudo apt-get install git
