@@ -21,6 +21,11 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ \
 sudo apt-get update 
 sudo apt-get install google-chrome-stable -y
 
+sudo add-apt-repository "deb http://archive.canonical.com/ \
+  $(lsb_release -sc) partner"
+sudo apt-get update && sudo apt-get install skype
+
+
 # In /usr/share/X11/xkb/symbols/pc
 #
 # key <LSGT> {    [ less, greater, bar, brokenbar  ]  };
