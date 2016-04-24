@@ -17,6 +17,7 @@ sudo apt-get install doxygen -y
 
 # Useful tools
 sudo apt-get install htop -y
+sudo apt-get install nload -y
 sudo apt-get install tig -y
 sudo apt-get install cloc -y
 sudo apt-get install tree -y
