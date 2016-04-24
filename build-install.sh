@@ -16,6 +16,7 @@ sudo apt-get install astyle -y
 sudo apt-get install doxygen -y
 
 # Useful tools
+sudo apt-get install tmux -y
 sudo apt-get install htop -y
 sudo apt-get install nload -y
 sudo apt-get install tig -y
