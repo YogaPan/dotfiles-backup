@@ -7,5 +7,6 @@ sudo npm install -g bower
 sudo npm install -g speed-test
 sudo npm install -g gulp
 
+rm -rf ~/.tldr
 mkdir ~/.tldr
 sudo npm install -g tldr
