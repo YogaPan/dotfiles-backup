@@ -24,8 +24,9 @@ sudo apt-get install gnuplot -y
 
 # Web Tools
 sudo apt-get install nmap -y
-sudo apt-get install apache2-utils -y
+sudo apt-get install nginx -y
 sudo apt-get install vsftpd -y
+sudo apt-get install apache2-utils -y
 
 # Install mail-utils.
 sudo apt-get install mutt esmtp -y
