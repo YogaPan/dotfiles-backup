@@ -7,12 +7,18 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'msanders/snipmate.vim'
+Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/OmniCppComplete'
 Plug 'junegunn/vim-easy-align'
 Plug 'haya14busa/incsearch.vim'
 call plug#end()
 
 let mapleader = ","
+
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css EmmetInstall
+
+let g:user_emmet_leader_key='<C-E>'
 
 let g:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`'}
 let NERDSpaceDelims=1
@@ -31,7 +37,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 syntax on
-colorscheme elflord
+colorscheme default
 set encoding=utf-8
 set autoread
 set backspace=2       " backspace in insert mode works like normal editor
@@ -47,8 +53,8 @@ set incsearch
 nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 
 set ruler
-set cursorline
-hi CursorLine term=bold cterm=bold guibg=Grey40
+" set cursorline
+" hi CursorLine term=bold cterm=bold guibg=Grey40
 " set number
 "set relativenumber
 
@@ -65,6 +71,7 @@ set expandtab
 let g:html_indent_inctags = "html,body,head,tbody"
 autocmd BufNewFile,BufFilePre,BufRead *.ejs set filetype=html
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufFilePre,BufRead .bowerrc set filetype=json
 autocmd Filetype c setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd Filetype cpp setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd FileType asm setlocal ts=8 sts=8 sw=8 noexpandtab
@@ -79,6 +86,7 @@ autocmd Filetype css setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype sh setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype json setlocal ts=2 sts=2 sw=2
 autocmd FileType vim setlocal ts=2 sts=2 sw=2
 
 "autocmd BufWrite * :%s/\s\+$//
