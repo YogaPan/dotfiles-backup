@@ -1,24 +1,42 @@
 call plug#begin('~/.vim/plugged')
 Plug 'pangloss/vim-javascript'
+Plug 'alvan/vim-closetag'
+Plug 'mxw/vim-jsx'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'msanders/snipmate.vim'
-Plug 'mattn/emmet-vim'
-Plug 'vim-scripts/OmniCppComplete'
+" Plug 'msanders/snipmate.vim'
+" Plug 'mattn/emmet-vim'
+" Plug 'vim-scripts/OmniCppComplete'
 Plug 'junegunn/vim-easy-align'
 Plug 'haya14busa/incsearch.vim'
+Plug 'kien/ctrlp.vim'
 call plug#end()
 
 let mapleader = ","
 
 " let g:user_emmet_install_global = 0
 " autocmd FileType html,css EmmetInstall
+" let g:user_emmet_leader_key='<C-E>'
 
-let g:user_emmet_leader_key='<C-E>'
+" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 1
+set laststatus=2
+
+let g:javascript_ignore_javaScriptdoc = 1
+let g:jsx_ext_required = 0
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js"
 
 let g:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`'}
 let NERDSpaceDelims=1
@@ -37,7 +55,9 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 syntax on
-colorscheme default
+set background=dark
+colorscheme solarized
+
 set encoding=utf-8
 set autoread
 set backspace=2       " backspace in insert mode works like normal editor
@@ -53,7 +73,7 @@ set incsearch
 nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 
 set ruler
-" set cursorline
+set cursorline
 " hi CursorLine term=bold cterm=bold guibg=Grey40
 " set number
 "set relativenumber
