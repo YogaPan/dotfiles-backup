@@ -1,9 +1,22 @@
 # Install vim packages.
-sudo apt-get update
-sudo apt-get install vim exuberant-ctags -y
+
+operating_system=`uname`
+
+if [ $operating_system = "Darwin" ]; then
+  echo "Install Mac os dependencies...\n"
+  brew install vim
+  brew install ctags
+fi
+
+if [ $operating_system = "Linux" ]; then
+  echo "Install Linux dependencies...\n"
+  apt-get update
+  apt-get install vim exuberant-ctags -y
+  apt-get install curl -y
+fi
 
 # Create directory for vim backup and swap files.
-sudo rm -rf ~/.vim
+rm -rf ~/.vim
 mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
 
 # vim-plug
