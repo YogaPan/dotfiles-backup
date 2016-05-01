@@ -1,6 +1,9 @@
 # Install zsh.
-sudo apt-get update
-sudo apt-get install zsh -y
+
+if [ `uname` = 'Linux' ]; then
+  sudo apt-get update
+  sudo apt-get install zsh -y
+fi
 
 # Install Oh-My-Zsh.
 echo -n "Checking for Oh-My-Zsh: "
