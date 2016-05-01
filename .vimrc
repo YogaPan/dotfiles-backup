@@ -1,25 +1,34 @@
 call plug#begin('~/.vim/plugged')
+" front-end develop
 Plug 'pangloss/vim-javascript'
 Plug 'alvan/vim-closetag'
 Plug 'mxw/vim-jsx'
+Plug 'ap/vim-css-color'
 
+" git
 Plug 'tpope/vim-fugitive'
+" Plug 'airblade/vim-gitgutter'
 
+" colorscheme
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Switch file and buffer
+Plug 'kien/ctrlp.vim'
+
+" edit function
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/vim-easy-align'
+Plug 'haya14busa/incsearch.vim'
+Plug 'tpope/vim-endwise'
 " Plug 'msanders/snipmate.vim'
 " Plug 'mattn/emmet-vim'
 " Plug 'vim-scripts/OmniCppComplete'
-Plug 'junegunn/vim-easy-align'
-Plug 'haya14busa/incsearch.vim'
-Plug 'kien/ctrlp.vim'
 call plug#end()
 
 let mapleader = ","
