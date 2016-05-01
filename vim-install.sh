@@ -1,5 +1,6 @@
 # Install vim packages.
 
+# Detect operating system
 operating_system=`uname`
 
 if [ $operating_system = "Darwin" ]; then
