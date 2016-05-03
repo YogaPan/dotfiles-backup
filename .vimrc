@@ -1,8 +1,8 @@
 call plug#begin('~/.vim/plugged')
 " front-end develop
 Plug 'pangloss/vim-javascript'
-Plug 'alvan/vim-closetag'
 Plug 'mxw/vim-jsx'
+Plug 'alvan/vim-closetag'
 Plug 'ap/vim-css-color'
 
 " git
@@ -26,6 +26,9 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/vim-easy-align'
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-endwise'
+Plug 'majutsushi/tagbar'
+Plug 'hynek/vim-python-pep8-indent'
+" Plug 'Valloric/YouCompleteMe'
 " Plug 'msanders/snipmate.vim'
 " Plug 'mattn/emmet-vim'
 " Plug 'vim-scripts/OmniCppComplete'
@@ -33,14 +36,18 @@ call plug#end()
 
 let mapleader = ","
 
+" let g:ycm_python_binary_path = '/usr/local/bin/python3'
+" let g:ycm_confirm_extra_conf = 0
+
 " let g:user_emmet_install_global = 0
 " autocmd FileType html,css EmmetInstall
 " let g:user_emmet_leader_key='<C-E>'
 
 " let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
 set laststatus=2
 
 let g:javascript_ignore_javaScriptdoc = 1
@@ -62,6 +69,10 @@ let g:incsearch#auto_nohlsearch = 1
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+nmap <F9> :TagbarToggle<CR>
+let g:tagbar_width = 30
+let g:tagbar_left = 0
 
 syntax on
 set background=dark
@@ -152,4 +163,4 @@ set completeopt=longest,menuone
 
 nmap <leader>c :find %:t:r.c <CR>
 nmap <leader>h :find %:t:r.h <CR>
-nnoremap <F9> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
+nnoremap <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
