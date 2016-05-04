@@ -18,6 +18,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/ctrlp.vim'
 
 " edit function
+Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
@@ -26,8 +27,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/vim-easy-align'
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-endwise'
-Plug 'majutsushi/tagbar'
 Plug 'hynek/vim-python-pep8-indent'
+Plug 'rking/ag.vim'
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'msanders/snipmate.vim'
 " Plug 'mattn/emmet-vim'
@@ -76,7 +77,7 @@ let g:tagbar_left = 0
 
 syntax on
 set background=dark
-colorscheme solarized
+colo solarized
 
 set encoding=utf-8
 set autoread
@@ -131,13 +132,20 @@ autocmd FileType vim setlocal ts=2 sts=2 sw=2
 
 "autocmd BufWrite * :%s/\s\+$//
 noremap <leader><space> :%s/\s\+$//<CR>:nohl<Bar>:echo<CR>
-" noremap <leader>o :%s/) {\n\(\_s*.\+\)\n\_s*}\n/)\r\1/g<CR>:nohl<Bar>:echo<CR>
-noremap <leader>o :%s/) {\n\(\_s*.\+\)\n\_s*}\(\n\\|\_s*\(else\)\_s*{\(\n.\+\)\n\(\_s*\)}\)/)\r\1\r\5\3\4/g<CR>
 noremap <C-l> zz
 inoremap <C-l> <C-o>zz
 inoremap <C-a> <C-o>I
 inoremap <C-e> <C-o>A
 set pastetoggle=<F10>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+" inoremap jk <esc>
+" inoremap <esc> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+onoremap p i(
 
 function! Expander()
   let line   = getline(".")
@@ -163,4 +171,5 @@ set completeopt=longest,menuone
 
 nmap <leader>c :find %:t:r.c <CR>
 nmap <leader>h :find %:t:r.h <CR>
-nnoremap <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
+nnoremap <F8> :!ctags -R<CR><CR>
+" nnoremap <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
