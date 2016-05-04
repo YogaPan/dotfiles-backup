@@ -19,7 +19,7 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub \
 sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ \
   stable main" >> /etc/apt/sources.list.d/google.list'
 apt-get update
- apt-get install google-chrome-stable -y
+apt-get install google-chrome-stable -y
 
 # sudo add-apt-repository "deb http://archive.canonical.com/ \
 #   $(lsb_release -sc) partner"
