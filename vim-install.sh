@@ -7,12 +7,14 @@ if [ $operating_system = "Darwin" ]; then
   echo "Install Mac os dependencies...\n"
   brew install vim
   brew install ctags
+  brew install the_silver_searcher
 fi
 
 if [ $operating_system = "Linux" ]; then
   echo "Install Linux dependencies...\n"
   apt-get update
   apt-get install vim exuberant-ctags -y
+  apt-get install silversearcher-ag -y
   apt-get install curl -y
 fi
 
