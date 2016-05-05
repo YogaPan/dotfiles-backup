@@ -146,6 +146,7 @@ set cursorline
 " set number
 " set relativenumber
 
+set wrap
 set textwidth=80
 
 " set dictionary="/usr/dict/words"
