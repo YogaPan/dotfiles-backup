@@ -1,4 +1,4 @@
-" Plugins {{{
+" Installed Plugins {{{
 call plug#begin('~/.vim/plugged')
 " front-end develop
 Plug 'pangloss/vim-javascript'
@@ -46,6 +46,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " delete trailing space
 noremap <leader><space> :%s/\s\+$//<CR>:nohl<Bar>:echo<CR>
+" disabled highlight
+nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 
 " emacs loke key binding when use insert mode
 noremap <C-l> zz
@@ -66,7 +68,6 @@ onoremap p i(
 nmap <leader>c :find %:t:r.c <CR>
 nmap <leader>h :find %:t:r.h <CR>
 nnoremap <F8> :!ctags -R<CR><CR>
-nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 " nnoremap <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 " }}}
 
