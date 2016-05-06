@@ -190,10 +190,10 @@ set cindent
 let g:html_indent_inctags = "html,body,head,tbody"
 
 " Default indent
-set shiftwidth=8
-set tabstop=8
-set softtabstop=8
-set expandtab
+"set shiftwidth=8
+"set tabstop=8
+"set softtabstop=8
+"set expandtab
 
 "autocmd BufWrite * :%s/\s\+$//
 
@@ -244,4 +244,20 @@ function! Expander()
 	endif
 endfunction
 inoremap <CR> <C-R>=Expander()<CR>
+
+let g:quickfix_is_open = 0
+
+function! QuickfixToggle()
+	if g:quickfix_is_open
+		cclose
+		let g:quickfix_is_open = 0
+		execute g:quickfix_return_to_window . "wincmd w"
+	else
+		let g:quickfix_return_to_window = winnr()
+		copen
+		let g:quickfix_is_open = 1
+	endif
+endfunction
+
+nnoremap <leader>q :call QuickfixToggle()<CR>
 " }}}
