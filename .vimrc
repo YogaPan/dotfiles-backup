@@ -17,6 +17,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Switch file and buffer
 Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
 Plug 'rking/ag.vim'
 
 " edit
@@ -45,9 +46,9 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " delete trailing space
-noremap <leader><space> :%s/\s\+$//<CR>:nohl<Bar>:echo<CR>
+noremap <leader><space> mq:%s/\s\+$//<CR>:nohl<Bar>:echo<CR>`q
 " disabled highlight
-nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
+nnoremap <silent> <Space> :nohl<Bar>:echo<CR>;
 
 " emacs like key binding when use insert mode
 noremap <C-l> zz
@@ -100,6 +101,9 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js"
 let g:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`'}
 let NERDSpaceDelims=1
 
+map <F5> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize = 20
+
 " Multu cursor settings
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
@@ -139,7 +143,7 @@ endfunction
 
 " Tagbar settings
 nnoremap <F9> :TagbarToggle<CR>
-let g:tagbar_width = 30
+let g:tagbar_width = 25
 let g:tagbar_left = 0
 
 " }}}
