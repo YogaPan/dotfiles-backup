@@ -3,37 +3,40 @@ call plug#begin('~/.vim/plugged')
 " front-end develop
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'alvan/vim-closetag'
 Plug 'ap/vim-css-color'
+Plug 'othree/html5.vim'
 
 " git setting
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 "Plug 'airblade/vim-gitgutter'
 
 " colorscheme
 Plug 'altercation/vim-colors-solarized'
+Plug 'nanotech/jellybeans.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Switch file and buffer
 Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'rking/ag.vim'
+Plug 'Valloric/ListToggle'
+"Plug 'scrooloose/nerdtree'
 
 " edit
-Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'terryma/vim-expand-region'
+Plug 'alvan/vim-closetag'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/vim-easy-align'
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-endwise'
 Plug 'hynek/vim-python-pep8-indent'
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
+"Plug 'majutsushi/tagbar'
 "Plug 'vim-scripts/OmniCppComplete'
 "Plug 'msanders/snipmate.vim'
+"Plug 'terryma/vim-expand-region'
 "Plug 'mattn/emmet-vim'
 call plug#end()
 " }}}
@@ -46,15 +49,23 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " delete trailing space
-noremap <leader><space> mq:%s/\s\+$//<CR>:nohl<Bar>:echo<CR>`q
+noremap <leader><space> :%s/\s\+$//<CR>:nohl<Bar>:echo<CR>
 " disabled highlight
 nnoremap <silent> <Space> :nohl<Bar>:echo<CR>;
 
 " emacs like key binding when use insert mode
 noremap <C-l> zz
 inoremap <C-l> <C-o>zz
+
+inoremap <C-f> <C-o>l
+inoremap <C-b> <C-o>h
+
+inoremap <A-b> <C-o>b
+inoremap <A-w> <C-o>w
+
 inoremap <C-a> <C-o>I
 inoremap <C-e> <C-o>A
+
 set pastetoggle=<F10>
 nnoremap ; :execute "normal! mqA;\e`q"<CR>
 
@@ -76,8 +87,19 @@ nnoremap <F8> :!ctags -R<CR><CR>
 " Plugin settings {{{
 
 " YouCompleteMe settings
-"let g:ycm_python_binary_path = '/usr/local/bin/python3'
-"let g:ycm_confirm_extra_conf = 0
+let g:ycm_python_binary_path = '/usr/local/bin/python3'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_auto_trigger = 1
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_always_populate_location_list = 1
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>>'
+let g:ycm_complete_in_comments = 0
+let g:ycm_complete_in_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 0
+set tags+=./tags
+highlight YcmErrorLine guibg=#3f0000
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 " Emmet settings
 "let g:user_emmet_install_global = 0
@@ -99,16 +121,28 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js"
 
 " Autopair settings
 let g:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`'}
-let NERDSpaceDelims=1
+let NERDSpaceDelims = 1
 
-map <F5> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize = 20
+" Ctrl-P settings
+let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'c'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o
+" let g:ctrlp_user_command = 'find %s -type f'
+
+" NerdTree settings
+"map <Leader>fl :NERDTreeToggle<CR>
+"let g:NERDTreeWinSize = 20
+"let NERDTreeWinPos="right"
+"let NERDTreeAutoDeleteBuffer=1
+"let NERDTreeMinimalUI=1
+"let NERDTreeShowHidden=1
 
 " Multu cursor settings
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_next_key = '<C-n>'
+let g:multi_cursor_prev_key = '<C-p>'
+let g:multi_cursor_skip_key = '<C-x>'
+let g:multi_cursor_quit_key = '<Esc>'
 
 " Incsearch Settings
 map /  <Plug>(incsearch-forward)
@@ -120,39 +154,23 @@ let g:incsearch#auto_nohlsearch = 1
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" Ag settings
-nnoremap <leader>g :set operatorfunc=GrepOperator<cr>g@
-vnoremap <leader>g :<c-u>call GrepOperator(visualmode())<cr>
-
-function! GrepOperator(type)
-	let saved_unnamed_register = @@
-
-	if a:type ==# 'v'
-		normal! `<v`>y
-	elseif a:type ==# 'char'
-		normal! `[v`]y
-	else
-		return
-	endif
-
-	echom shellescape(@@)
-	execute "Ag! " . shellescape(@@)
-
-	let @@ = saved_unnamed_register
-endfunction
-
 " Tagbar settings
-nnoremap <F9> :TagbarToggle<CR>
-let g:tagbar_width = 25
-let g:tagbar_left = 0
+"nnoremap <F9> :TagbarToggle<CR>
+"let g:tagbar_width = 25
+"let g:tagbar_left = 0
 
 " }}}
 
 " Basic settings {{{
+
+" Auto load .vimrc
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
 " Colorscheme and syntax
 syntax on
 set background=dark
-colo solarized
+"colo solarized
+colo jellybeans
 
 " Editor behavior
 set encoding=utf-8
@@ -191,7 +209,7 @@ set completeopt=longest,menuone
 set autoindent
 set smartindent
 set cindent
-let g:html_indent_inctags = "html,body,head,tbody"
+" let g:html_indent_inctags = "html,body,head,tbody"
 
 " Default indent
 "set shiftwidth=8
@@ -248,20 +266,3 @@ function! Expander()
 	endif
 endfunction
 inoremap <CR> <C-R>=Expander()<CR>
-
-let g:quickfix_is_open = 0
-
-function! QuickfixToggle()
-	if g:quickfix_is_open
-		cclose
-		let g:quickfix_is_open = 0
-		execute g:quickfix_return_to_window . "wincmd w"
-	else
-		let g:quickfix_return_to_window = winnr()
-		copen
-		let g:quickfix_is_open = 1
-	endif
-endfunction
-
-nnoremap <leader>q :call QuickfixToggle()<CR>
-" }}}
