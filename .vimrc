@@ -127,7 +127,8 @@ let NERDSpaceDelims = 1
 let g:ctrlp_map = '<c-p>'
 "let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_working_path_mode = 'c'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o
+let g:ctrlp_show_hidden = 1
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/.git/*
 " let g:ctrlp_user_command = 'find %s -type f'
 
 " NerdTree settings
@@ -224,6 +225,7 @@ augroup vim_filetype
 	autocmd BufNewFile,BufFilePre,BufRead *.ejs set filetype=html
 	autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 	autocmd BufNewFile,BufFilePre,BufRead .bowerrc set filetype=json
+	autocmd BufNewFile,BufFilePre,BufRead .tern-project set filetype=json
 augroup END
 
 augroup vim_indent
