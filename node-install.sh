@@ -11,7 +11,7 @@ fi
 if [ $operating_system = "Linux" ]; then
   echo "Install Linux dependencies...\n"
   apt-get install curl -y
-  curl --silent --location https://deb.nodesource.com/setup_5.x | sudo bash -
+  curl --silent --location https://deb.nodesource.com/setup_6.x | sudo bash -
   apt-get install nodejs -y
 fi
 

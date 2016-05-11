@@ -4,6 +4,7 @@
 # sudo apt-get install software-properties-common
 apt-get update
 apt-get install build-essential -y
+apt-get install cmake
 apt-get install gdb valgrind -y
 apt-get install libssl-dev libncurses5-dev -y
 

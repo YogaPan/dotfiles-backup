@@ -12,15 +12,18 @@ fi
 
 if [ $operating_system = "Linux" ]; then
   echo "Install Linux dependencies...\n"
-  apt-get update
-  apt-get install vim exuberant-ctags -y
-  apt-get install silversearcher-ag -y
-  apt-get install curl -y
+  sudo apt-get update
+  sudo apt-get install vim exuberant-ctags -y
+  sudo apt-get install silversearcher-ag -y
+  sudo apt-get install curl -y
 fi
 
 # Create directory for vim backup and swap files.
 rm -rf ~/.vim
-mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
+#mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
+mkdir ~/.vim/backup_files
+mkdir ~/.vim/swap_files
+mkdir ~/.vim/undo_files
 
 # vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
