@@ -174,9 +174,9 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 syntax on
 set background=dark
 "colo solarized
-"colo jellybeans
-let g:seoul256_background = 233
-colo seoul256
+colo jellybeans
+"let g:seoul256_background = 233
+"colo seoul256
 
 " Editor behavior
 set encoding=utf-8
