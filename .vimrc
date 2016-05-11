@@ -13,6 +13,7 @@ Plug 'othree/html5.vim'
 " colorscheme
 Plug 'altercation/vim-colors-solarized'
 Plug 'nanotech/jellybeans.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -112,6 +113,8 @@ nnoremap <leader>jd :YcmCompleter GoTo<CR>
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
+" All options: indent, trailing, long, mixed-indent-file
+let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long' ]
 set laststatus=2
 
 " Javascript Settings
@@ -171,7 +174,9 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 syntax on
 set background=dark
 "colo solarized
-colo jellybeans
+"colo jellybeans
+let g:seoul256_background = 233
+colo seoul256
 
 " Editor behavior
 set encoding=utf-8
@@ -210,7 +215,7 @@ set completeopt=longest,menuone
 set autoindent
 set smartindent
 set cindent
-" let g:html_indent_inctags = "html,body,head,tbody"
+"let g:html_indent_inctags = "html,body,head,tbody"
 
 " Default indent
 "set shiftwidth=8
@@ -226,12 +231,13 @@ augroup vim_filetype
 	autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 	autocmd BufNewFile,BufFilePre,BufRead .bowerrc set filetype=json
 	autocmd BufNewFile,BufFilePre,BufRead .tern-project set filetype=json
+	autocmd BufNewFile,BufFilePre,BufRead *.h set filetype=c
 augroup END
 
 augroup vim_indent
 	autocmd!
 	autocmd Filetype c setlocal ts=8 sts=8 sw=8 noexpandtab
-	autocmd Filetype cpp setlocal ts=8 sts=8 sw=8 noexpandtab
+	autocmd Filetype cpp setlocal ts=2 sts=2 sw=2 noexpandtab
 	autocmd FileType asm setlocal ts=8 sts=8 sw=8 noexpandtab
 	autocmd FileType perl setlocal ts=8 sts=8 sw=8 noexpandtab
 	autocmd FileType text setlocal ts=8 sts=8 sw=8 noexpandtab
@@ -242,7 +248,7 @@ augroup vim_indent
 	autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
 	autocmd Filetype css setlocal ts=2 sts=2 sw=2
 	autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-	autocmd Filetype sh setlocal ts=2 sts=2 sw=2
+	autocmd Filetype sh setlocal ts=2 sts=2 sw=2 noexpandtab
 	autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 	autocmd Filetype json setlocal ts=2 sts=2 sw=2
 	autocmd FileType vim setlocal ts=2 sts=2 sw=2 noexpandtab foldmethod=marker
