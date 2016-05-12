@@ -1,25 +1,25 @@
 #!/bin/bash
 
-apt-get install fcitx -y
-apt-get install guake -y
-apt-get install fonts-hack-ttf -y
-apt-get install flashplugin-installer -y
+sudo apt-get install fcitx -y
+sudo apt-get install guake -y
+sudo apt-get install fonts-hack-ttf -y
+sudo apt-get install flashplugin-installer -y
 
-apt-get install unity-tweak-tool -y
-add-apt-repository ppa:numix/ppa -y
-apt-get update
-apt-get install numix-icon-theme-circle numix-gtk-theme -y
+sudo apt-get install unity-tweak-tool -y
+sudo add-apt-repository ppa:numix/ppa -y
+sudo apt-get update
+sudo apt-get install numix-icon-theme-circle numix-gtk-theme -y
 
-add-apt-repository ppa:nilarimogard/webupd8 -y
-apt-get update
-apt-get install pulseaudio-equalizer -y
+sudo add-apt-repository ppa:nilarimogard/webupd8 -y
+sudo apt-get update
+sudo apt-get install pulseaudio-equalizer -y
 
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub \
   | apt-key add -
 sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ \
   stable main" >> /etc/apt/sources.list.d/google.list'
-apt-get update
-apt-get install google-chrome-stable -y
+sudo apt-get update
+sudo apt-get install google-chrome-stable -y
 
 # sudo add-apt-repository "deb http://archive.canonical.com/ \
 #   $(lsb_release -sc) partner"
