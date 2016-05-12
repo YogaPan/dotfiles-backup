@@ -19,7 +19,6 @@ if [ $operating_system = "Linux" ]; then
 fi
 
 # Create directory for vim backup and swap files.
-rm -rf ~/.vim
 #mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
 mkdir ~/.vim/backup_files
 mkdir ~/.vim/swap_files
