@@ -15,6 +15,11 @@ apt-get install linux-tools-`uname -r` linux-cloud-tools-`uname -r` -y
 # For coding sytle and document.
 apt-get install astyle -y
 apt-get install doxygen -y
+apt-get install graphviz -y
+
+# For opencv
+apt-get install libopencv-lib -y
+apt-get install python-opencv -y
 
 # Useful tools
 apt-get install tmux -y
