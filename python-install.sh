@@ -11,8 +11,8 @@ fi
 
 if [ $operating_system = "Linux" ]; then
   echo "Install Linux dependencies...\n"
-  apt-get install python-dev python3-dev python-pip python3-pip -y
-  apt-get install python3-matplotlib -y
+  sudo apt-get install python-dev python3-dev python-pip python3-pip -y
+  sudo apt-get install python3-matplotlib -y
 fi
 
 # Web tools
