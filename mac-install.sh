@@ -16,3 +16,5 @@ brew install tmux
 brew install nmap
 brew install sqlmap
 brew install apache2-utils
+brew install graphviz
+brew install homebrew/science/opencv

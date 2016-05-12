@@ -20,6 +20,7 @@ apt-get install graphviz -y
 # For opencv
 apt-get install libopencv-lib -y
 apt-get install python-opencv -y
+# http://milq.github.io/install-opencv-ubuntu-debian/
 
 # Useful tools
 apt-get install tmux -y
