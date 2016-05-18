@@ -7,8 +7,8 @@ Plug 'ap/vim-css-color'
 Plug 'othree/html5.vim'
 
 " git setting
-"Plug 'tpope/vim-fugitive'
-"Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " colorscheme
 Plug 'altercation/vim-colors-solarized'
@@ -19,6 +19,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Switch file and buffer
 Plug 'kien/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
 Plug 'rking/ag.vim'
 Plug 'Valloric/ListToggle'
 "Plug 'scrooloose/nerdtree'
@@ -128,11 +129,16 @@ let NERDSpaceDelims = 1
 
 " Ctrl-P settings
 let g:ctrlp_map = '<c-p>'
-"let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_show_hidden = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/.git/*
-" let g:ctrlp_user_command = 'find %s -type f'
+"let g:ctrlp_user_command = 'find %s -type f'
+
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+"narrow the list down with a word under cursor
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+let g:ctrlp_funky_syntax_highlight = 1
 
 " NerdTree settings
 "map <Leader>fl :NERDTreeToggle<CR>
