@@ -34,7 +34,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-endwise'
 Plug 'hynek/vim-python-pep8-indent'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 "Plug 'majutsushi/tagbar'
 "Plug 'vim-scripts/OmniCppComplete'
 "Plug 'msanders/snipmate.vim'
@@ -180,9 +180,9 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 syntax on
 set background=dark
 "colo solarized
-colo jellybeans
-"let g:seoul256_background = 233
-"colo seoul256
+"colo jellybeans
+let g:seoul256_background = 233
+colo seoul256
 
 " Editor behavior
 set encoding=utf-8
@@ -242,7 +242,7 @@ augroup END
 
 augroup vim_indent
 	autocmd!
-	autocmd Filetype c setlocal ts=8 sts=8 sw=8 noexpandtab
+	autocmd Filetype c setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd Filetype cpp setlocal ts=2 sts=2 sw=2 noexpandtab
 	autocmd FileType asm setlocal ts=8 sts=8 sw=8 noexpandtab
 	autocmd FileType perl setlocal ts=8 sts=8 sw=8 noexpandtab
