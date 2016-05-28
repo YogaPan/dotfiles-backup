@@ -1,4 +1,4 @@
-;; Use melpa to install package
+; Use melpa to install package
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (setq package-enable-at-startup nil)
@@ -35,9 +35,9 @@
 
 
 ;; Setting colorscheme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
 (set-terminal-parameter nil 'background-mode 'dark)
 (load-theme 'solarized t)
+;; (load-theme 'junio t)
 
 
 ;; Hightlight line
@@ -49,25 +49,41 @@
 
 
 ;; Indent settings.
-;(setq-default indent-tabs-mode nil)
-;(setq-default tab-width 4)
-;(setq indent-line-function 'insert-tab)
-(setq-default c-basic-offset 4
-			  tab-width 4
-			  indent-tabs-mode t)
-(add-hook 'python-mode-hook '(lambda ()
-							   (setq python-indent 4)))
-;(setq js2-basic-offset 2)
-;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+(add-hook 'c-mode-hook '(lambda()
+						  (setq c-basic-offset 4)
+						  (setq tab-width 4)
+						  (setq indent-tabs-mode t)))
+(add-hook 'python-mode-hook
+		  '(lambda ()
+			 (setq python-indent 4)
+			 (setq indent-tabs-mode nil)))
 ;(setq js-indent-level 2)
 
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 
+;; Auto pair
+(electric-pair-mode 1)
+;; Customize your pairs.
+(setq electric-pair-pairs '(
+							(?\" . ?\")
+							;; (?\' . ?\')
+							(?\` . ?\`)
+							(?\[ . ?\])
+							(?\{ . ?\})
+							) )
+(defvar web-electric-pairs '((?\' . ?\')) "Electric pairs for web-mode.")
+(defun web-add-electric-pairs ()
+  (setq-local electric-pair-pairs (append electric-pair-pairs web-electric-pairs))
+  (setq-local electric-pair-text-pairs electric-pair-pairs))
+(add-hook 'web-mode-hook 'web-add-electric-pairs)
+
+
 ;; Smart line
-;(setq sml/theme 'light)
-;(setq sml/theme 'dark)
-(setq sml/theme 'respectful)
+(setq sml/theme 'respectful)  ; dark, light or respectful
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
 
@@ -89,6 +105,12 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 
+;; Projectile
+(projectile-global-mode)
+(setq projectile-enable-caching t)
+(setq inhibit-startup-screen t)
+
+
 ;; Use evil mode
 (setq evil-want-C-u-scroll t)
 (evil-mode 1)
@@ -108,20 +130,9 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
-
-;; Auto pair
-(electric-pair-mode 1)
-;; Customize your pairs.
-(setq electric-pair-pairs '(
-							(?\" . ?\")
-							(?\{ . ?\})
-							(?\' . ?\')
-							(?\` . ?\`)
-							) )
-
+(add-to-list 'auto-mode-alist '("\\.gitignore\\'" . text-mode))
 
 ;; web-mode settings.
-(require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
@@ -150,7 +161,7 @@
 ;(setq web-mode-enable-block-face t)
 (setq web-mode-comment-style 2)
 
-(setq web-mode-enable-auto-pairing t)
+;; (setq web-mode-enable-auto-pairing t)
 (setq web-mode-enable-auto-quoting nil)
 
 ;(setq web-mode-enable-auto-closing t)
@@ -158,20 +169,56 @@
 
 
 ;; Company mode.
-;; (require 'company)
-;; (add-hook 'after-init-hook 'global-company-mode)
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
 ;; (add-to-list 'company-backends 'company-tern)
 ;;(add-to-list 'company-backends 'company-tern)
 ;; (with-eval-after-load 'company
 ;;    (add-to-list 'company-backends 'company-jedi))
 
-;; FlyCheck
-;; (require 'flycheck)
-;; (add-hook 'after-init-hook #'global-flycheck-mode)
-;; (flycheck-add-mode 'javascript-eslint 'web-mode)
 
+;; (global-ede-mode 1)                      ; Enable the Project management system
+
+;; (setq load-path (cons "/usr/local/Cellar/global/6.5.4/share/gtags/" load-path))
+;; (autoload 'gtags-mode "gtags" "" t)
+;; (setq gtags-mode-hook
+;;    '(lambda ()
+;;       (local-set-key "\M-t" 'gtags-find-tag)
+;;       (local-set-key "\M-r" 'gtags-find-rtag)
+;;       (local-set-key "\M-s" 'gtags-find-symbol)
+;;       (local-set-key "\C-t" 'gtags-pop-stack)
+;;       ))
+;; (setq c-mode-hook
+;; '(lambda ()
+;; (gtags-mode 1)))
+;; (setq c++-mode-hook
+;; '(lambda ()
+;; (gtags-mode 1)))
+
+
+;; FlyCheck
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+;; (flycheck-add-mode 'javascript-eslint 'web-mode)
 ;; customize flycheck temp file prefix
-;; (setq-default flycheck-temp-prefix ".flycheck")
+(setq-default flycheck-temp-prefix ".flycheck")
+
+
+;; Magit
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+(require 'evil-magit)
+
+
+;; Org Mode
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+(org-babel-do-load-languages
+ 'org-babel-load-languages '(
+							 (C . t)
+							 (dot . t)
+							 (sh . t)
+							 ))
 
 
 (custom-set-variables
@@ -181,7 +228,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-	("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "3d5ef3d7ed58c9ad321f05360ad8a6b24585b9c49abcee67bdcbb0fe583a6950" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1" default))))
+	("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "e0d42a58c84161a0744ceab595370cbe290949968ab62273aed6212df0ea94b4" "58c6711a3b568437bab07a30385d34aacf64156cc5137ea20e799984f4227265" "3cc2385c39257fed66238921602d8104d8fd6266ad88a006d0a4325336f5ee02" "e9776d12e4ccb722a2a732c6e80423331bcb93f02e089ba2a4b02e85de1cf00e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "3d5ef3d7ed58c9ad321f05360ad8a6b24585b9c49abcee67bdcbb0fe583a6950" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
