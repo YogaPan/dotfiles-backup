@@ -21,7 +21,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'rking/ag.vim'
-Plug 'Valloric/ListToggle'
+"Plug 'Valloric/ListToggle'
 "Plug 'scrooloose/nerdtree'
 
 " edit
@@ -121,7 +121,7 @@ set laststatus=2
 " Javascript Settings
 let g:javascript_ignore_javaScriptdoc = 1
 let g:jsx_ext_required = 0
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.ejs,*.js"
 
 " Autopair settings
 let g:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`'}
@@ -132,7 +132,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_working_path_mode = 'ra'
 "let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_show_hidden = 1
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/.git/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/.git/*,*/node_modules/*
 "let g:ctrlp_user_command = 'find %s -type f'
 
 nnoremap <Leader>fu :CtrlPFunky<Cr>
@@ -180,9 +180,10 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 syntax on
 set background=dark
 "colo solarized
-"colo jellybeans
-let g:seoul256_background = 233
-colo seoul256
+colo jellybeans
+"let g:seoul256_background = 233
+"colo seoul256
+"colo elflord
 
 " Editor behavior
 set encoding=utf-8
