@@ -1,0 +1,45 @@
+;; web-mode settings.
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.eslintrc\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.xsd\\'" . web-mode))
+
+(setq web-mode-content-types-alist
+  '(("jsx" . "\\.js[x]?\\'")))
+
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-style-padding 2)
+(setq web-mode-script-padding 2)
+(setq web-mode-block-padding 0)
+(setq web-mode-enable-current-element-highlight t)
+(setq web-mode-enable-css-colorization t)
+;; (setq web-mode-enable-block-face t)
+(setq web-mode-comment-style 2)
+;; (setq web-mode-enable-auto-pairing t)
+(setq web-mode-enable-auto-quoting nil)
+;; (setq web-mode-enable-auto-closing t)
+(setq web-mode-tag-auto-close-style 2)
+(setq web-mode-enable-auto-expanding t)
+
+
+(defvar web-electric-pairs '((?\' . ?\')) "Electric pairs for web-mode.")
+(defun web-add-electric-pairs ()
+  (setq-local electric-pair-pairs (append electric-pair-pairs web-electric-pairs))
+  (setq-local electric-pair-text-pairs electric-pair-pairs))
+(add-hook 'web-mode-hook 'web-add-electric-pairs)
+
+
+(provide 'init-web)

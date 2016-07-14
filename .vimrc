@@ -1,8 +1,8 @@
 " Installed Plugins {{{
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 " front-end develop
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+"Plug 'mxw/vim-jsx'
 Plug 'ap/vim-css-color'
 Plug 'othree/html5.vim'
 
@@ -19,27 +19,26 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Switch file and buffer
 Plug 'kien/ctrlp.vim'
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'rking/ag.vim'
-"Plug 'Valloric/ListToggle'
+"Plug 'tacahiroy/ctrlp-funky'
+"Plug 'rking/ag.vim'
+Plug 'Valloric/ListToggle'
 "Plug 'scrooloose/nerdtree'
 
 " edit
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'alvan/vim-closetag'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/vim-easy-align'
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-endwise'
 Plug 'hynek/vim-python-pep8-indent'
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
+Plug 'mattn/emmet-vim'
+"Plug 'Shougo/deoplete.nvim'
 "Plug 'majutsushi/tagbar'
-"Plug 'vim-scripts/OmniCppComplete'
 "Plug 'msanders/snipmate.vim'
-"Plug 'terryma/vim-expand-region'
-"Plug 'mattn/emmet-vim'
+"Plug 'alvan/vim-closetag'
 call plug#end()
 " }}}
 
@@ -53,7 +52,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " delete trailing space
 noremap <leader><space> :%s/\s\+$//<CR>:nohl<Bar>:echo<CR>
 " disabled highlight
-nnoremap <silent> <Space> :nohl<Bar>:echo<CR>;
+nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 
 " emacs like key binding when use insert mode
 noremap <C-l> zz
@@ -69,7 +68,7 @@ inoremap <C-a> <C-o>I
 inoremap <C-e> <C-o>A
 
 set pastetoggle=<F10>
-nnoremap ; :execute "normal! mqA;\e`q"<CR>
+"nnoremap ; :execute "normal! mqA;\e`q"<CR>
 
 " Just use hjkl
 nnoremap <left> <nop>
@@ -88,6 +87,8 @@ nnoremap <F8> :!ctags -R<CR><CR>
 
 " Plugin settings {{{
 
+let g:deoplete#enable_at_startup = 1
+
 " YouCompleteMe settings
 let g:ycm_python_binary_path = '/usr/local/bin/python3'
 let g:ycm_confirm_extra_conf = 0
@@ -104,9 +105,9 @@ highlight YcmErrorLine guibg=#3f0000
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 " Emmet settings
-"let g:user_emmet_install_global = 0
-"autocmd FileType html,css EmmetInstall
-"let g:user_emmet_leader_key='<C-E>'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+let g:user_emmet_leader_key='<C-E>'
 
 " Airline Settings
 "let g:airline#extensions#tabline#enabled = 1
@@ -141,12 +142,12 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 let g:ctrlp_funky_syntax_highlight = 1
 
 " NerdTree settings
-"map <Leader>fl :NERDTreeToggle<CR>
-"let g:NERDTreeWinSize = 20
+map <Leader>fl :NERDTreeToggle<CR>
+let g:NERDTreeWinSize = 20
 "let NERDTreeWinPos="right"
-"let NERDTreeAutoDeleteBuffer=1
-"let NERDTreeMinimalUI=1
-"let NERDTreeShowHidden=1
+let NERDTreeAutoDeleteBuffer=1
+let NERDTreeMinimalUI=1
+let NERDTreeShowHidden=1
 
 " Multu cursor settings
 let g:multi_cursor_next_key = '<C-n>'
@@ -174,13 +175,13 @@ nmap ga <Plug>(EasyAlign)
 " Basic settings {{{
 
 " Auto load .vimrc
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+"autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " Colorscheme and syntax
 syntax on
 set background=dark
-"colo solarized
-colo jellybeans
+colo solarized
+"colo jellybeans
 "let g:seoul256_background = 233
 "colo seoul256
 "colo elflord
@@ -192,9 +193,9 @@ set autoread
 
 " Backup settings
 "set nobackup  " get rid of anoying ~file
-set backupdir=~/.vim/backup_files//
-set directory=~/.vim/swap_files//
-set undodir=~/.vim/undo_files//
+set backupdir=~/.config/nvim/backup_files//
+set directory=~/.config/nvim/swap_files//
+set undodir=~/.config/nvim/undo_files//
 
 " Search settings
 set ignorecase
@@ -212,6 +213,9 @@ set cursorline
 " Auto newline
 set wrap
 set textwidth=80
+
+" Use system clipboard
+set clipboard+=unnamedplus
 
 " Auto complete
 "set dictionary="/usr/dict/words"
@@ -249,16 +253,17 @@ augroup vim_indent
 	autocmd FileType perl setlocal ts=8 sts=8 sw=8 noexpandtab
 	autocmd FileType text setlocal ts=8 sts=8 sw=8 noexpandtab
 	autocmd Filetype php setlocal ts=4 sts=4 sw=4 noexpandtab
-	autocmd Filetype python setlocal ts=4 sts=4 sw=4
-	autocmd Filetype gitcommit setlocal ts=4 sts=4 sw=4
-	autocmd Filetype html setlocal ts=2 sts=2 sw=2
-	autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
-	autocmd Filetype css setlocal ts=2 sts=2 sw=2
-	autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+	autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab
+	autocmd Filetype gitcommit setlocal ts=4 sts=4 sw=4 expandtab
+	autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype eruby setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype css setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd Filetype sh setlocal ts=2 sts=2 sw=2 noexpandtab
-	autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-	autocmd Filetype json setlocal ts=2 sts=2 sw=2
+	autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype json setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType vim setlocal ts=2 sts=2 sw=2 noexpandtab foldmethod=marker
+	autocmd FileType rst setlocal ts=4 sts=4 sw=4
 augroup END
 " }}}
 
