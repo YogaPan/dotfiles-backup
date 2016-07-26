@@ -2,9 +2,16 @@
 call plug#begin('~/.config/nvim/plugged')
 " front-end develop
 Plug 'pangloss/vim-javascript'
-"Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 Plug 'ap/vim-css-color'
 Plug 'othree/html5.vim'
+
+" Markdown syntax support
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+" RTF Copy support
+Plug 'zerowidth/vim-copy-as-rtf'
 
 " git setting
 Plug 'tpope/vim-fugitive'
@@ -12,8 +19,8 @@ Plug 'airblade/vim-gitgutter'
 
 " colorscheme
 Plug 'altercation/vim-colors-solarized'
-Plug 'nanotech/jellybeans.vim'
-Plug 'junegunn/seoul256.vim'
+"Plug 'nanotech/jellybeans.vim'
+"Plug 'junegunn/seoul256.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -21,7 +28,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/ctrlp.vim'
 "Plug 'tacahiroy/ctrlp-funky'
 "Plug 'rking/ag.vim'
-Plug 'Valloric/ListToggle'
+"Plug 'Valloric/ListToggle'
 "Plug 'scrooloose/nerdtree'
 
 " edit
@@ -33,8 +40,9 @@ Plug 'junegunn/vim-easy-align'
 Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-endwise'
 Plug 'hynek/vim-python-pep8-indent'
-Plug 'Valloric/YouCompleteMe'
 Plug 'mattn/emmet-vim'
+" Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe'
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'majutsushi/tagbar'
 "Plug 'msanders/snipmate.vim'
@@ -104,9 +112,13 @@ set tags+=./tags
 highlight YcmErrorLine guibg=#3f0000
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
+" SuperTab settings
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
 " Emmet settings
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,javascript EmmetInstall
 let g:user_emmet_leader_key='<C-E>'
 
 " Airline Settings
@@ -116,7 +128,7 @@ let g:user_emmet_leader_key='<C-E>'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 " All options: indent, trailing, long, mixed-indent-file
-let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long' ]
+let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing']
 set laststatus=2
 
 " Javascript Settings
@@ -165,6 +177,8 @@ let g:incsearch#auto_nohlsearch = 1
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+let g:vim_markdown_folding_disabled = 1
+
 " Tagbar settings
 "nnoremap <F9> :TagbarToggle<CR>
 "let g:tagbar_width = 25
@@ -180,11 +194,16 @@ nmap ga <Plug>(EasyAlign)
 " Colorscheme and syntax
 syntax on
 set background=dark
-colo solarized
-"colo jellybeans
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+" let g:solarized_termcolors = 16
+ let g:solarized_termtrans = 1
+ colo solarized
+" colo jellybeans
 "let g:seoul256_background = 233
 "colo seoul256
 "colo elflord
+
 
 " Editor behavior
 set encoding=utf-8
@@ -240,8 +259,10 @@ augroup vim_filetype
 	autocmd!
 	autocmd BufNewFile,BufFilePre,BufRead *.ejs set filetype=html
 	autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+	autocmd BufNewFile,BufFilePre,BufRead *.fish set filetype=sh
 	autocmd BufNewFile,BufFilePre,BufRead .bowerrc set filetype=json
 	autocmd BufNewFile,BufFilePre,BufRead .tern-project set filetype=json
+	autocmd BufNewFile,BufFilePre,BufRead .eslintrc set filetype=json
 	autocmd BufNewFile,BufFilePre,BufRead *.h set filetype=c
 augroup END
 
@@ -262,6 +283,7 @@ augroup vim_indent
 	autocmd Filetype sh setlocal ts=2 sts=2 sw=2 noexpandtab
 	autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd Filetype json setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType vim setlocal ts=2 sts=2 sw=2 noexpandtab foldmethod=marker
 	autocmd FileType rst setlocal ts=4 sts=4 sw=4
 augroup END
