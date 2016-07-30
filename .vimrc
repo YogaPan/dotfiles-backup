@@ -10,9 +10,6 @@ Plug 'othree/html5.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
-" RTF Copy support
-Plug 'zerowidth/vim-copy-as-rtf'
-
 " git setting
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -29,7 +26,10 @@ Plug 'kien/ctrlp.vim'
 "Plug 'tacahiroy/ctrlp-funky'
 "Plug 'rking/ag.vim'
 "Plug 'Valloric/ListToggle'
-"Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
+
+" syntax checker
+"Plug 'scrooloose/syntastic'
 
 " edit
 Plug 'scrooloose/nerdcommenter'
@@ -41,7 +41,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-endwise'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'mattn/emmet-vim'
-" Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe'
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'majutsushi/tagbar'
@@ -95,8 +95,6 @@ nnoremap <F8> :!ctags -R<CR><CR>
 
 " Plugin settings {{{
 
-let g:deoplete#enable_at_startup = 1
-
 " YouCompleteMe settings
 let g:ycm_python_binary_path = '/usr/local/bin/python3'
 let g:ycm_confirm_extra_conf = 0
@@ -115,6 +113,19 @@ nnoremap <leader>jd :YcmCompleter GoTo<CR>
 " SuperTab settings
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 5
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint'
 
 " Emmet settings
 let g:user_emmet_install_global = 0
@@ -197,12 +208,12 @@ set background=dark
 " let g:solarized_visibility = "high"
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors = 16
- let g:solarized_termtrans = 1
- colo solarized
+let g:solarized_termtrans = 1
+colo solarized
 " colo jellybeans
-"let g:seoul256_background = 233
-"colo seoul256
-"colo elflord
+" let g:seoul256_background = 233
+" colo seoul256
+" colo elflord
 
 
 " Editor behavior
