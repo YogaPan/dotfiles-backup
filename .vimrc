@@ -22,11 +22,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Switch file and buffer
-Plug 'kien/ctrlp.vim'
-"Plug 'tacahiroy/ctrlp-funky'
-"Plug 'rking/ag.vim'
-"Plug 'Valloric/ListToggle'
 Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+"Plug 'rking/ag.vim'
+"Plug 'tacahiroy/ctrlp-funky'
+"Plug 'Valloric/ListToggle'
 
 " syntax checker
 "Plug 'scrooloose/syntastic'
@@ -41,9 +41,8 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-endwise'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'mattn/emmet-vim'
-"Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe'
-"Plug 'Shougo/deoplete.nvim'
+"Plug 'ervandew/supertab'
 "Plug 'majutsushi/tagbar'
 "Plug 'msanders/snipmate.vim'
 "Plug 'alvan/vim-closetag'
@@ -118,7 +117,6 @@ let g:SuperTabContextDefaultCompletionType = "<c-n>"
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -127,9 +125,27 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint'
 
+
+" fugitive git bindings
+nnoremap <space>ga :Git add %:p<CR><CR>
+nnoremap <space>gs :Gstatus<CR>
+nnoremap <space>gc :Gcommit -v -q<CR>
+nnoremap <space>gt :Gcommit -v -q %:p<CR>
+nnoremap <space>gd :Gdiff<CR>
+nnoremap <space>ge :Gedit<CR>
+nnoremap <space>gr :Gread<CR>
+nnoremap <space>gw :Gwrite<CR><CR>
+nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <space>gp :Ggrep<Space>
+nnoremap <space>gm :Gmove<Space>
+nnoremap <space>gb :Git branch<Space>
+nnoremap <space>go :Git checkout<Space>
+nnoremap <space>gps :Dispatch! git push<CR>
+nnoremap <space>gpl :Dispatch! git pull<CR>
+
 " Emmet settings
-let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascript EmmetInstall
+let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key='<C-E>'
 
 " Airline Settings
@@ -165,7 +181,8 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 let g:ctrlp_funky_syntax_highlight = 1
 
 " NerdTree settings
-map <Leader>fl :NERDTreeToggle<CR>
+" map <Leader>fl :NERDTreeToggle<CR>
+map <Space>q :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 20
 "let NERDTreeWinPos="right"
 let NERDTreeAutoDeleteBuffer=1
@@ -188,12 +205,13 @@ let g:incsearch#auto_nohlsearch = 1
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" markdown settings
 let g:vim_markdown_folding_disabled = 1
 
 " Tagbar settings
-"nnoremap <F9> :TagbarToggle<CR>
-"let g:tagbar_width = 25
-"let g:tagbar_left = 0
+nnoremap <F9> :TagbarToggle<CR>
+let g:tagbar_width = 25
+let g:tagbar_left = 0
 
 " }}}
 
