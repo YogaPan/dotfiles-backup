@@ -181,7 +181,6 @@ nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 let g:ctrlp_funky_syntax_highlight = 1
 
 " NerdTree settings
-" map <Leader>fl :NERDTreeToggle<CR>
 map <Space>q :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 20
 "let NERDTreeWinPos="right"
