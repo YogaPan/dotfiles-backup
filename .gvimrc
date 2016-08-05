@@ -1,2 +1,2 @@
-set guifont=Hack:h24
-set guioptions-=rL 
+set guifont=Monoid:h24
+set guioptions-=rL
