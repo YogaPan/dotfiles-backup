@@ -129,8 +129,11 @@ let g:syntastic_javascript_eslint_exec = 'eslint'
 " fugitive git bindings
 nnoremap <space>ga :Git add %:p<CR><CR>
 nnoremap <space>gs :Gstatus<CR>
-nnoremap <space>gc :Gcommit -v -q<CR>
-nnoremap <space>gt :Gcommit -v -q %:p<CR>
+nnoremap <space>gc :Gcommit -q<CR>
+nnoremap <space>gt :Gcommit -q %:p<CR>
+" use -v parameter when Gcommit, optional.
+"nnoremap <space>gc :Gcommit -v -q<CR>
+"nnoremap <space>gt :Gcommit -v -q %:p<CR>
 nnoremap <space>gd :Gdiff<CR>
 nnoremap <space>ge :Gedit<CR>
 nnoremap <space>gr :Gread<CR>
@@ -222,15 +225,15 @@ let g:tagbar_left = 0
 " Colorscheme and syntax
 syntax on
 set background=dark
-" let g:solarized_visibility = "high"
-" let g:solarized_contrast = "high"
-" let g:solarized_termcolors = 16
+"let g:solarized_visibility = "high"
+"let g:solarized_contrast = "high"
+"let g:solarized_termcolors = 16
 let g:solarized_termtrans = 1
+let g:seoul256_background = 233
+"colo elflord
 colo solarized
-" colo jellybeans
-" let g:seoul256_background = 233
-" colo seoul256
-" colo elflord
+"colo jellybeans
+"colo seoul256
 
 
 " Editor behavior
@@ -254,7 +257,7 @@ set incsearch
 set ruler
 set cursorline
 "hi CursorLine term=bold cterm=bold guibg=Grey40
-"set number
+set number
 "set relativenumber
 
 " Auto newline
@@ -262,7 +265,7 @@ set wrap
 set textwidth=80
 
 " Use system clipboard
-set clipboard+=unnamedplus
+"set clipboard+=unnamedplus
 
 " Auto complete
 "set dictionary="/usr/dict/words"
