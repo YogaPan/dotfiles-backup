@@ -1,5 +1,5 @@
 " Installed Plugins {{{
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.vim/plugged')
 " front-end develop
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -31,7 +31,7 @@ Plug 'kien/ctrlp.vim'
 " syntax checker
 "Plug 'scrooloose/syntastic'
 
-" edit
+" edit and autocomplete
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
@@ -82,6 +82,8 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 nnoremap <up> <nop>
 nnoremap <down> <nop>
+
+" Force to not use esc key.
 "inoremap jk <esc>
 "inoremap <esc> <nop>
 
@@ -179,7 +181,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/.git/*,*/node_modules/*
 "let g:ctrlp_user_command = 'find %s -type f'
 
 nnoremap <Leader>fu :CtrlPFunky<Cr>
-"narrow the list down with a word under cursor
+" narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 let g:ctrlp_funky_syntax_highlight = 1
 
@@ -219,9 +221,6 @@ let g:tagbar_left = 0
 
 " Basic settings {{{
 
-" Auto load .vimrc
-"autocmd BufWritePost $MYVIMRC source $MYVIMRC
-
 " Colorscheme and syntax
 syntax on
 set background=dark
@@ -235,6 +234,9 @@ colo solarized
 "colo jellybeans
 "colo seoul256
 
+" Autoload .vimrc
+" Default is disable. because this may cause some fatal problems.
+"autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " Editor behavior
 set encoding=utf-8
@@ -243,9 +245,9 @@ set autoread
 
 " Backup settings
 "set nobackup  " get rid of anoying ~file
-set backupdir=~/.config/nvim/backup_files//
-set directory=~/.config/nvim/swap_files//
-set undodir=~/.config/nvim/undo_files//
+set backupdir=~/.vim/backup_files//
+set directory=~/.vim/swap_files//
+set undodir=~/.vim/undo_files//
 
 " Search settings
 set ignorecase
@@ -256,9 +258,9 @@ set incsearch
 " Cursor and Ruler
 set ruler
 set cursorline
-"hi CursorLine term=bold cterm=bold guibg=Grey40
 set number
 "set relativenumber
+"hi CursorLine term=bold cterm=bold guibg=Grey40
 
 " Auto newline
 set wrap
