@@ -1,3 +1,8 @@
+" Set font family and size.
 set guifont=Monoid:h24
+
+" No scrollbar
 set guioptions-=rL
-set transparency=10
+
+" Transparant settings.
+"set transparency=10
