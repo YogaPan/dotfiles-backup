@@ -1,5 +1,5 @@
 " Set font family and size.
-set guifont=Monoid:h24
+set guifont=Hack:h28
 
 " No scrollbar
 set guioptions-=rL
