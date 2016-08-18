@@ -1,10 +1,14 @@
 " Installed Plugins {{{
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
+
 " front-end develop
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'ap/vim-css-color'
 Plug 'othree/html5.vim'
+
+" Golang package
+Plug 'fatih/vim-go'
 
 " Markdown syntax support
 Plug 'godlygeek/tabular'
@@ -16,10 +20,10 @@ Plug 'airblade/vim-gitgutter'
 
 " colorscheme
 Plug 'altercation/vim-colors-solarized'
-"Plug 'nanotech/jellybeans.vim'
-"Plug 'junegunn/seoul256.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+"Plug 'nanotech/jellybeans.vim'
+"Plug 'junegunn/seoul256.vim'
 
 " Switch file and buffer
 Plug 'scrooloose/nerdtree'
@@ -43,7 +47,8 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'mattn/emmet-vim'
 Plug 'Valloric/YouCompleteMe'
 "Plug 'ervandew/supertab'
-"Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
+"Plug 'Shougo/deoplete.nvim'
 "Plug 'msanders/snipmate.vim'
 "Plug 'alvan/vim-closetag'
 call plug#end()
@@ -115,6 +120,9 @@ nnoremap <leader>jd :YcmCompleter GoTo<CR>
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
 " Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -126,6 +134,8 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint'
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 
 " fugitive git bindings
@@ -213,9 +223,50 @@ nmap ga <Plug>(EasyAlign)
 let g:vim_markdown_folding_disabled = 1
 
 " Tagbar settings
-nnoremap <F9> :TagbarToggle<CR>
-let g:tagbar_width = 25
+nnoremap <space>w :TagbarToggle<CR>
+let g:tagbar_width = 20
 let g:tagbar_left = 0
+
+" Golang settings
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+" au FileType go nmap <Leader>gd <Plug>(go-doc)
+" au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+let g:go_fmt_command = "goimports"
+" let g:go_fmt_fail_silently = 1
+" let g:go_fmt_autosave = 0
+" let g:go_play_open_browser = 0
+" let g:go_bin_path = expand("~/.gotools")
+" let g:go_bin_path = "/home/fatih/.mypath"
+" let g:go_get_update = 0
+
+au FileType go nmap <leader>rt <Plug>(go-run-tab)
+au FileType go nmap <Leader>rs <Plug>(go-run-split)
+au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
+
+" let g:go_term_mode = "split"
+" let g:go_term_enabled = 1
+" let g:go_list_type = "quickfix"
 
 " }}}
 
@@ -245,9 +296,9 @@ set autoread
 
 " Backup settings
 "set nobackup  " get rid of anoying ~file
-set backupdir=~/.vim/backup_files//
-set directory=~/.vim/swap_files//
-set undodir=~/.vim/undo_files//
+set backupdir=~/.config/nvim/backup_files//
+set directory=~/.config/nvim/swap_files//
+set undodir=~/.config/nvim/undo_files//
 
 " Search settings
 set ignorecase
@@ -303,6 +354,7 @@ augroup vim_indent
 	autocmd!
 	autocmd Filetype c setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd Filetype cpp setlocal ts=2 sts=2 sw=2 noexpandtab
+	autocmd Filetype go setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd FileType asm setlocal ts=8 sts=8 sw=8 noexpandtab
 	autocmd FileType perl setlocal ts=8 sts=8 sw=8 noexpandtab
 	autocmd FileType text setlocal ts=8 sts=8 sw=8 noexpandtab
