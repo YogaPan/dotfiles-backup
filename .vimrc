@@ -12,10 +12,10 @@
 " https://github.com/junegunn/vim-plug
 "
 " if you are using vim and macvim:
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+" $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 "   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 " if you are using neovim:
-" curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+" $ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 "   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "
 "
@@ -29,8 +29,8 @@
 " Go to this site and see how to compile ycm and install third party.
 " https://github.com/Valloric/YouCompleteMe
 "
-" cd ~/.vim/bundle/YouCompleteMe
-" ./install.py --clang-completer --gocode-completer --tern-completer
+" $ cd ~/.vim/bundle/YouCompleteMe
+" $ ./install.py --clang-completer --gocode-completer --tern-completer
 "
 "
 "
