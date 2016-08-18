@@ -1,4 +1,46 @@
-" Install packages:
+" How to use this .vimrc file?
+"
+" If you are using vim and macvim, just copy this .vimrc file
+" into your home directory.
+" If you are using neovim, copy this .vimrc file into
+" ~/.config/nvim/init.vim
+"
+"
+"
+" Install vim-plug
+" Go to this site and see how to get vim-plug.
+" https://github.com/junegunn/vim-plug
+"
+" if you are using vim and macvim:
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" if you are using neovim:
+" curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
+"
+"
+" Install all package via vim-plug:
+" $ vim +PlugInstall +qall
+"
+"
+"
+" Compile YouCompleteMe and install third party
+" Go to this site and see how to compile ycm and install third party.
+" https://github.com/Valloric/YouCompleteMe
+"
+" cd ~/.vim/bundle/YouCompleteMe
+" ./install.py --clang-completer --gocode-completer --tern-completer
+"
+"
+"
+" Install go-vim
+" After set your $GOPATH
+" $ vim +GoInstallBinaries
+"
+" Go to this site and see more about go-vim.
+" https://github.com/fatih/vim-go
+
 
 " Installed Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
@@ -353,7 +395,7 @@ set textwidth=80
 
 
 " Use system clipboard
-" set clipboard+=unnamedplus
+set clipboard+=unnamedplus
 
 
 " Auto complete
