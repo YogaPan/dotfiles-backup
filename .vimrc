@@ -1,7 +1,9 @@
+" Install packages:
+
 " Installed Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
-" front-end develop
+" Front-end develop
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'ap/vim-css-color'
@@ -14,28 +16,29 @@ Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
-" git setting
+" Git setting
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" colorscheme
+" Colorscheme
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'nanotech/jellybeans.vim'
-"Plug 'junegunn/seoul256.vim'
+" Plug 'nanotech/jellybeans.vim'
+" Plug 'junegunn/seoul256.vim'
 
 " Switch file and buffer
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
-"Plug 'rking/ag.vim'
-"Plug 'tacahiroy/ctrlp-funky'
-"Plug 'Valloric/ListToggle'
+Plug 'majutsushi/tagbar'
+" Plug 'rking/ag.vim'
+" Plug 'tacahiroy/ctrlp-funky'
+" Plug 'Valloric/ListToggle'
 
-" syntax checker
-"Plug 'scrooloose/syntastic'
+" Syntax checker
+" Plug 'scrooloose/syntastic'
 
-" edit and autocomplete
+" Edit and autocomplete
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
@@ -46,41 +49,43 @@ Plug 'tpope/vim-endwise'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'mattn/emmet-vim'
 Plug 'Valloric/YouCompleteMe'
-"Plug 'ervandew/supertab'
-Plug 'majutsushi/tagbar'
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'msanders/snipmate.vim'
-"Plug 'alvan/vim-closetag'
+" Plug 'ervandew/supertab'
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'msanders/snipmate.vim'
+" Plug 'alvan/vim-closetag'
+"
 call plug#end()
 " }}}
 
 " Key map settings {{{
 let mapleader = ","
 
-" open and source vimrc
+
+" Open and source vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-" delete trailing space
+
+" Delete trailing space
 noremap <leader><space> :%s/\s\+$//<CR>:nohl<Bar>:echo<CR>
-" disabled highlight
+" Disabled highlight
 nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
 
-" emacs like key binding when use insert mode
+
+" Emacs like key binding when use insert mode
 noremap <C-l> zz
 inoremap <C-l> <C-o>zz
-
 inoremap <C-f> <C-o>l
 inoremap <C-b> <C-o>h
-
 inoremap <A-b> <C-o>b
 inoremap <A-w> <C-o>w
-
 inoremap <C-a> <C-o>I
 inoremap <C-e> <C-o>A
 
+
 set pastetoggle=<F10>
-"nnoremap ; :execute "normal! mqA;\e`q"<CR>
+" nnoremap ; :execute "normal! mqA;\e`q"<CR>
+
 
 " Just use hjkl
 nnoremap <left> <nop>
@@ -88,9 +93,11 @@ nnoremap <right> <nop>
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 
+
 " Force to not use esc key.
-"inoremap jk <esc>
-"inoremap <esc> <nop>
+" inoremap jk <esc>
+" inoremap <esc> <nop>
+
 
 onoremap p i(
 nnoremap <leader>c :find %:t:r.c <CR>
@@ -98,6 +105,7 @@ nnoremap <leader>h :find %:t:r.h <CR>
 nnoremap <F8> :!ctags -R<CR><CR>
 " nnoremap <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 " }}}
+
 
 " Plugin settings {{{
 
@@ -116,12 +124,15 @@ set tags+=./tags
 highlight YcmErrorLine guibg=#3f0000
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
+
 " SuperTab settings
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
+
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+
 
 " Syntastic settings
 set statusline+=%#warningmsg#
@@ -144,8 +155,8 @@ nnoremap <space>gs :Gstatus<CR>
 nnoremap <space>gc :Gcommit -q<CR>
 nnoremap <space>gt :Gcommit -q %:p<CR>
 " use -v parameter when Gcommit, optional.
-"nnoremap <space>gc :Gcommit -v -q<CR>
-"nnoremap <space>gt :Gcommit -v -q %:p<CR>
+" nnoremap <space>gc :Gcommit -v -q<CR>
+" nnoremap <space>gt :Gcommit -v -q %:p<CR>
 nnoremap <space>gd :Gdiff<CR>
 nnoremap <space>ge :Gedit<CR>
 nnoremap <space>gr :Gread<CR>
@@ -158,56 +169,66 @@ nnoremap <space>go :Git checkout<Space>
 nnoremap <space>gps :Dispatch! git push<CR>
 nnoremap <space>gpl :Dispatch! git pull<CR>
 
+
 " Emmet settings
 autocmd FileType html,css,javascript EmmetInstall
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key='<C-E>'
 
+
 " Airline Settings
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 " All options: indent, trailing, long, mixed-indent-file
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing']
 set laststatus=2
 
+
 " Javascript Settings
 let g:javascript_ignore_javaScriptdoc = 1
 let g:jsx_ext_required = 0
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.ejs,*.js"
 
+
 " Autopair settings
 let g:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`'}
 let NERDSpaceDelims = 1
 
+
 " Ctrl-P settings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_working_path_mode = 'ra'
-"let g:ctrlp_working_path_mode = 'c'
+" let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_show_hidden = 1
+" let g:ctrlp_user_command = 'find %s -type f'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*/.git/*,*/node_modules/*
-"let g:ctrlp_user_command = 'find %s -type f'
 
+
+" Ctrlp Funky settings
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 let g:ctrlp_funky_syntax_highlight = 1
 
+
 " NerdTree settings
 map <Space>q :NERDTreeToggle<CR>
-let g:NERDTreeWinSize = 20
 "let NERDTreeWinPos="right"
+let g:NERDTreeWinSize = 20
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
 
-" Multu cursor settings
+
+" Multi cursor settings
 let g:multi_cursor_next_key = '<C-n>'
 let g:multi_cursor_prev_key = '<C-p>'
 let g:multi_cursor_skip_key = '<C-x>'
 let g:multi_cursor_quit_key = '<Esc>'
+
 
 " Incsearch Settings
 map /  <Plug>(incsearch-forward)
@@ -215,17 +236,21 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 let g:incsearch#auto_nohlsearch = 1
 
+
 " EasyAlign settings
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+
 " markdown settings
 let g:vim_markdown_folding_disabled = 1
+
 
 " Tagbar settings
 nnoremap <space>w :TagbarToggle<CR>
 let g:tagbar_width = 20
 let g:tagbar_left = 0
+
 
 " Golang settings
 au FileType go nmap <leader>r <Plug>(go-run)
@@ -268,6 +293,7 @@ au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
 " let g:go_term_enabled = 1
 " let g:go_list_type = "quickfix"
 
+
 " }}}
 
 " Basic settings {{{
@@ -275,30 +301,36 @@ au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
 " Colorscheme and syntax
 syntax on
 set background=dark
-"let g:solarized_visibility = "high"
-"let g:solarized_contrast = "high"
-"let g:solarized_termcolors = 16
-let g:solarized_termtrans = 1
-let g:seoul256_background = 233
-"colo elflord
-colo solarized
-"colo jellybeans
-"colo seoul256
 
-" Autoload .vimrc
+let g:solarized_termtrans = 1
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+" let g:solarized_termcolors = 16
+colo solarized
+
+let g:seoul256_background = 233
+" colo seoul256
+
+" colo jellybeans
+" colo elflord  " This one a little better than default colorscheme.
+
+
+" Auto load .vimrc
 " Default is disable. because this may cause some fatal problems.
-"autocmd BufWritePost $MYVIMRC source $MYVIMRC
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " Editor behavior
 set encoding=utf-8
 set backspace=2  " backspace in insert mode works like normal editor
 set autoread
 
+
 " Backup settings
-"set nobackup  " get rid of anoying ~file
+" set nobackup  " get rid of anoying ~file
 set backupdir=~/.config/nvim/backup_files//
 set directory=~/.config/nvim/swap_files//
 set undodir=~/.config/nvim/undo_files//
+
 
 " Search settings
 set ignorecase
@@ -306,23 +338,28 @@ set smartcase
 set hlsearch
 set incsearch
 
+
 " Cursor and Ruler
 set ruler
 set cursorline
 set number
-"set relativenumber
-"hi CursorLine term=bold cterm=bold guibg=Grey40
+" set relativenumber
+" hi CursorLine term=bold cterm=bold guibg=Grey40
+
 
 " Auto newline
 set wrap
 set textwidth=80
 
+
 " Use system clipboard
-"set clipboard+=unnamedplus
+" set clipboard+=unnamedplus
+
 
 " Auto complete
-"set dictionary="/usr/dict/words"
+" set dictionary="/usr/dict/words"
 set completeopt=longest,menuone
+
 " }}}
 
 " Indent setting {{{
@@ -331,14 +368,19 @@ set smartindent
 set cindent
 "let g:html_indent_inctags = "html,body,head,tbody"
 
+
 " Default indent
-"set shiftwidth=8
-"set tabstop=8
-"set softtabstop=8
-"set expandtab
+" set shiftwidth=8
+" set tabstop=8
+" set softtabstop=8
+" set expandtab
 
-"autocmd BufWrite * :%s/\s\+$//
 
+" Automatically delete traling space.
+" autocmd BufWrite * :%s/\s\+$//
+
+
+" Detect filetype
 augroup vim_filetype
 	autocmd!
 	autocmd BufNewFile,BufFilePre,BufRead *.ejs set filetype=html
@@ -350,6 +392,8 @@ augroup vim_filetype
 	autocmd BufNewFile,BufFilePre,BufRead *.h set filetype=c
 augroup END
 
+
+" Indent settings
 augroup vim_indent
 	autocmd!
 	autocmd Filetype c setlocal ts=4 sts=4 sw=4 noexpandtab
@@ -375,6 +419,8 @@ augroup END
 " }}}
 
 " Function {{{
+
+" Html tag new line expander.
 function! Expander()
 	let line   = getline(".")
 	let col    = col(".")
@@ -392,4 +438,8 @@ function! Expander()
 		return "\<CR>"
 	endif
 endfunction
-inoremap <CR> <C-R>=Expander()<CR>
+
+" Toggle when enter key press
+" inoremap <CR> <C-R>=Expander()<CR>
+au FileType html,javascript inoremap <CR> <C-R>=Expander()<CR>
+" }}}
