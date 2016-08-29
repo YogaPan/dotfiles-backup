@@ -1,0 +1,184 @@
+" Key map settings {{{
+let mapleader = ","
+
+
+" Open and source vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+
+" Delete trailing space
+noremap <leader><space> :%s/\s\+$//<CR>:nohl<Bar>:echo<CR>
+" Disabled highlight
+nnoremap <silent> <Space> :nohl<Bar>:echo<CR>
+
+
+" Emacs like key binding when use insert mode
+noremap <C-l> zz
+inoremap <C-l> <C-o>zz
+inoremap <C-f> <C-o>l
+inoremap <C-b> <C-o>h
+inoremap <A-b> <C-o>b
+inoremap <A-w> <C-o>w
+inoremap <C-a> <C-o>I
+inoremap <C-e> <C-o>A
+
+
+set pastetoggle=<F10>
+" nnoremap ; :execute "normal! mqA;\e`q"<CR>
+
+
+" Just use hjkl
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+
+
+" Force to not use esc key.
+" inoremap jk <esc>
+" inoremap <esc> <nop>
+
+
+onoremap p i(
+nnoremap <leader>c :find %:t:r.c <CR>
+nnoremap <leader>h :find %:t:r.h <CR>
+nnoremap <F8> :!ctags -R<CR><CR>
+" nnoremap <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
+" }}}
+
+
+" Basic settings {{{
+
+" Colorscheme and syntax
+syntax on
+set background=dark
+
+" Auto load .vimrc
+" Default is disable. because this may cause some fatal problems.
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+" Editor behavior
+set encoding=utf-8
+set backspace=2  " backspace in insert mode works like normal editor
+set autoread
+
+
+" Backup settings
+" set nobackup  " get rid of anoying ~file
+set backupdir=~/.config/nvim/backup_files//
+set directory=~/.config/nvim/swap_files//
+set undodir=~/.config/nvim/undo_files//
+
+
+" Search settings
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+
+
+" Cursor and Ruler
+set ruler
+set cursorline
+set number
+" set relativenumber
+" hi CursorLine term=bold cterm=bold guibg=Grey40
+
+
+" Auto newline
+set wrap
+set textwidth=80
+
+
+" Use system clipboard
+set clipboard+=unnamedplus
+
+
+" Auto complete
+" set dictionary="/usr/dict/words"
+set completeopt=longest,menuone
+
+" }}}
+
+" Indent setting {{{
+set autoindent
+set smartindent
+set cindent
+let g:html_indent_inctags = "html,body,head,tbody"
+
+
+" Default indent
+" set shiftwidth=8
+" set tabstop=8
+" set softtabstop=8
+" set expandtab
+
+
+" Automatically delete traling space.
+" autocmd BufWrite * :%s/\s\+$//
+
+
+" Detect filetype
+augroup vim_filetype
+	autocmd!
+	autocmd BufNewFile,BufFilePre,BufRead *.ejs set filetype=html
+	autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+	autocmd BufNewFile,BufFilePre,BufRead *.fish set filetype=sh
+	autocmd BufNewFile,BufFilePre,BufRead .bowerrc set filetype=json
+	autocmd BufNewFile,BufFilePre,BufRead .tern-project set filetype=json
+	autocmd BufNewFile,BufFilePre,BufRead .eslintrc set filetype=json
+	autocmd BufNewFile,BufFilePre,BufRead *.h set filetype=c
+augroup END
+
+
+" Indent settings
+augroup vim_indent
+	autocmd!
+	autocmd Filetype c setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd Filetype cpp setlocal ts=2 sts=2 sw=2 noexpandtab
+	autocmd Filetype go setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd FileType asm setlocal ts=8 sts=8 sw=8 noexpandtab
+	autocmd FileType perl setlocal ts=8 sts=8 sw=8 noexpandtab
+	autocmd FileType text setlocal ts=8 sts=8 sw=8 noexpandtab
+	autocmd Filetype php setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab
+	autocmd Filetype gitcommit setlocal ts=4 sts=4 sw=4 expandtab
+	autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype eruby setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype css setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype sh setlocal ts=2 sts=2 sw=2 noexpandtab
+	autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype json setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType vim setlocal ts=2 sts=2 sw=2 noexpandtab foldmethod=marker
+	autocmd FileType rst setlocal ts=4 sts=4 sw=4
+augroup END
+" }}}
+
+" Function {{{
+
+" Html tag new line expander.
+function! Expander()
+	let line   = getline(".")
+	let col    = col(".")
+	let first  = line[col-2]
+	let second = line[col-1]
+	let third  = line[col]
+
+	if first ==# ">"
+		if second ==# "<" && third ==# "/"
+			return "\<CR>\<C-o>O"
+		else
+			return "\<CR>"
+		endif
+	else
+		return "\<CR>"
+	endif
+endfunction
+
+" Toggle when enter key press
+" inoremap <CR> <C-R>=Expander()<CR>
+au FileType html,javascript inoremap <CR> <C-R>=Expander()<CR>
+" }}}
