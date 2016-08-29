@@ -52,7 +52,7 @@ nnoremap <F8> :!ctags -R<CR><CR>
 
 " Colorscheme and syntax
 syntax on
-set background=dark
+" set background=dark
 
 " Auto load .vimrc
 " Default is disable. because this may cause some fatal problems.
@@ -80,10 +80,11 @@ set incsearch
 
 " Cursor and Ruler
 set ruler
-set cursorline
-set number
+" set number
 " set relativenumber
+" set cursorline
 " hi CursorLine term=bold cterm=bold guibg=Grey40
+set laststatus=1
 
 
 " Auto newline
