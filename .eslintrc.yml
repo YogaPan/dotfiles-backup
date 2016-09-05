@@ -74,9 +74,9 @@ rules:
   space-infix-ops:
     - error
   no-undef:
-    - off
+    - error
   no-unused-vars:
-    - off
+    - error
   no-console:
     - off
   jsx-quotes:
