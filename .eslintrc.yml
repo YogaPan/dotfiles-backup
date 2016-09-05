@@ -82,6 +82,8 @@ rules:
   jsx-quotes:
     - error
     - prefer-double
+  import/no-unresolved:
+    - error
   react/jsx-no-bind:
     - error
   react/jsx-curly-spacing:
