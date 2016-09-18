@@ -384,7 +384,7 @@ set ruler
 set cursorline
 set number
 " set relativenumber
-hi CursorLine term=bold cterm=bold guibg=Grey40
+" hi CursorLine term=bold cterm=bold guibg=Grey40
 
 
 " Auto newline
