@@ -148,7 +148,6 @@ nnoremap <F8> :!ctags -R<CR><CR>
 " nnoremap <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 " }}}
 
-
 " Plugin settings {{{
 
 " YouCompleteMe settings
@@ -226,7 +225,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 " All options: indent, trailing, long, mixed-indent-file
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing']
-set laststatus=2
+set laststatus=1
 
 
 " Javascript Settings
@@ -344,16 +343,15 @@ au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
 syntax on
 set background=dark
 
-let g:solarized_termtrans = 1
+let g:seoul256_background = 233
+" let g:solarized_termtrans = 1
 " let g:solarized_visibility = "high"
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors = 16
-colo solarized
 
-let g:seoul256_background = 233
 " colo seoul256
-
 " colo jellybeans
+colo solarized
 " colo elflord  " This one a little better than default colorscheme.
 
 
@@ -386,7 +384,7 @@ set ruler
 set cursorline
 set number
 " set relativenumber
-" hi CursorLine term=bold cterm=bold guibg=Grey40
+hi CursorLine term=bold cterm=bold guibg=Grey40
 
 
 " Auto newline
