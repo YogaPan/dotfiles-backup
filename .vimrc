@@ -225,7 +225,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 " All options: indent, trailing, long, mixed-indent-file
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing']
-set laststatus=1
+set laststatus=1 " Set to 2 enable airline features.
 
 
 " Javascript Settings
@@ -236,7 +236,11 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.ejs,*.js"
 
 " Autopair settings
 let g:AutoPairs = {'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`'}
+
+" Nerd commenter settings
 let NERDSpaceDelims = 1
+let g:NERDCustomDelimiters = { 'python': { 'left': '#','right': '' } }
+let g:NERDDefaultAlign = 'left'
 
 
 " Ctrl-P settings
@@ -439,6 +443,7 @@ augroup vim_indent
 	autocmd Filetype c setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd Filetype cpp setlocal ts=2 sts=2 sw=2 noexpandtab
 	autocmd Filetype go setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd FileType rst setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd FileType asm setlocal ts=8 sts=8 sw=8 noexpandtab
 	autocmd FileType perl setlocal ts=8 sts=8 sw=8 noexpandtab
 	autocmd FileType text setlocal ts=8 sts=8 sw=8 noexpandtab
@@ -454,7 +459,6 @@ augroup vim_indent
 	autocmd Filetype json setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType vim setlocal ts=2 sts=2 sw=2 noexpandtab foldmethod=marker
-	autocmd FileType rst setlocal ts=4 sts=4 sw=4
 augroup END
 " }}}
 
