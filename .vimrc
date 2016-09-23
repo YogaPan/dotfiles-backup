@@ -446,7 +446,7 @@ augroup vim_indent
 	autocmd FileType rst setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd FileType asm setlocal ts=8 sts=8 sw=8 noexpandtab
 	autocmd FileType perl setlocal ts=8 sts=8 sw=8 noexpandtab
-	autocmd FileType text setlocal ts=8 sts=8 sw=8 noexpandtab
+	autocmd FileType text setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd Filetype php setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 	autocmd Filetype gitcommit setlocal ts=4 sts=4 sw=4 expandtab
