@@ -63,9 +63,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Colorscheme
-Plug 'altercation/vim-colors-solarized'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 " Plug 'nanotech/jellybeans.vim'
 " Plug 'junegunn/seoul256.vim'
 
@@ -90,7 +90,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-endwise'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'mattn/emmet-vim'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " Plug 'ervandew/supertab'
 " Plug 'Shougo/deoplete.nvim'
 " Plug 'msanders/snipmate.vim'
@@ -355,8 +355,8 @@ let g:seoul256_background = 233
 
 " colo seoul256
 " colo jellybeans
-colo solarized
-" colo elflord  " This one a little better than default colorscheme.
+" colo solarized
+colo elflord  " This one a little better than default colorscheme.
 
 
 " Auto load .vimrc
@@ -386,9 +386,9 @@ set incsearch
 " Cursor and Ruler
 set ruler
 set cursorline
-set number
+" set number
 " set relativenumber
-" hi CursorLine term=bold cterm=bold guibg=Grey40
+hi CursorLine term=bold cterm=bold guibg=Grey40
 
 
 " Auto newline
