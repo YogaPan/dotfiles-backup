@@ -55,7 +55,7 @@ plugins=(git virtualenv zsh-syntax-highlighting)
 export GOPATH=$HOME/Desktop/go  # Set GOPATH
 
 # Executable binaries path
-export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:/usr/local/Cellar/node/7.0.0/bin:$PATH
 
 # Set default editor
 export EDITOR=nvim
