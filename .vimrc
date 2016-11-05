@@ -1,4 +1,4 @@
-" How to use this .vimrc file?
+" How to use this .vimrc file? {{{
 "
 " If you are using vim and macvim, just copy this .vimrc file
 " into your home directory.
@@ -40,7 +40,7 @@
 "
 " Go to this site and see more about go-vim.
 " https://github.com/fatih/vim-go
-
+" }}}
 
 " Installed Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
@@ -353,10 +353,10 @@ let g:seoul256_background = 233
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors = 16
 
+colo elflord  " This one a little better than default colorscheme.
 " colo seoul256
 " colo jellybeans
 " colo solarized
-colo elflord  " This one a little better than default colorscheme.
 
 
 " Auto load .vimrc
