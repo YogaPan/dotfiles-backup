@@ -32,6 +32,9 @@
 " $ cd ~/.vim/bundle/YouCompleteMe
 " $ ./install.py --clang-completer --gocode-completer --tern-completer
 "
+" If you use neovim, just type:
+" $ pip3 install --upgrade neovim
+"
 "
 "
 " Install go-vim
@@ -52,27 +55,29 @@ Plug 'ap/vim-css-color'
 Plug 'othree/html5.vim'
 
 " Golang package
-Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go'
 
 " Markdown syntax support
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+
+Plug 'Yggdroot/indentLine'
 
 " Git setting
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Colorscheme
-" Plug 'altercation/vim-colors-solarized'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'nanotech/jellybeans.vim'
-" Plug 'junegunn/seoul256.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'nanotech/jellybeans.vim'
+Plug 'junegunn/seoul256.vim'
 
 " Switch file and buffer
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 " Plug 'rking/ag.vim'
 " Plug 'tacahiroy/ctrlp-funky'
 " Plug 'Valloric/ListToggle'
@@ -225,7 +230,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 " All options: indent, trailing, long, mixed-indent-file
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing']
-set laststatus=1 " Set to 2 enable airline features.
+set laststatus=2 " Set to 2 enable airline features.
 
 
 " Javascript Settings
@@ -353,8 +358,8 @@ let g:seoul256_background = 233
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors = 16
 
-colo elflord  " This one a little better than default colorscheme.
-" colo seoul256
+" colo elflord  " This one a little better than default colorscheme.
+colo seoul256
 " colo jellybeans
 " colo solarized
 
