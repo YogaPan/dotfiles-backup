@@ -55,7 +55,7 @@ plugins=(git virtualenv zsh-syntax-highlighting)
 export GOPATH=$HOME/Desktop/go  # Set GOPATH
 
 # Executable binaries path
-export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:`yarn global bin`:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin:$PATH
 
 # Set default editor
 export EDITOR=nvim
