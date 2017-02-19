@@ -95,7 +95,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-endwise'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'mattn/emmet-vim'
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 " Plug 'ervandew/supertab'
 " Plug 'Shougo/deoplete.nvim'
 " Plug 'msanders/snipmate.vim'
@@ -353,13 +353,13 @@ syntax on
 set background=dark
 
 let g:seoul256_background = 233
-" let g:solarized_termtrans = 1
+let g:solarized_termtrans = 1
 " let g:solarized_visibility = "high"
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors = 16
 
 " colo elflord  " This one a little better than default colorscheme.
-colo seoul256
+" colo seoul256
 " colo jellybeans
 " colo solarized
 
@@ -454,7 +454,7 @@ augroup vim_indent
 	autocmd FileType text setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd Filetype php setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab
-	autocmd Filetype gitcommit setlocal ts=4 sts=4 sw=4 expandtab
+	autocmd Filetype gitcommit setlocal spell textwidth=72
 	autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd Filetype eruby setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd Filetype css setlocal ts=2 sts=2 sw=2 expandtab
