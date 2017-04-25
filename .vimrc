@@ -53,6 +53,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'ap/vim-css-color'
 Plug 'othree/html5.vim'
+Plug 'posva/vim-vue'
 
 " Golang package
 " Plug 'fatih/vim-go'
@@ -61,18 +62,21 @@ Plug 'othree/html5.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
-Plug 'Yggdroot/indentLine'
+Plug 'yggdroot/indentLine'
 
 " Git setting
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Colorscheme
-Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
 Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'jdkanani/vim-material-theme'
+Plug 'kristijanhusak/vim-hybrid-material'
+
 
 " Switch file and buffer
 Plug 'scrooloose/nerdtree'
@@ -84,6 +88,7 @@ Plug 'kien/ctrlp.vim'
 
 " Syntax checker
 " Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 
 " Edit and autocomplete
 Plug 'scrooloose/nerdcommenter'
@@ -95,7 +100,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-endwise'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'mattn/emmet-vim'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " Plug 'ervandew/supertab'
 " Plug 'Shougo/deoplete.nvim'
 " Plug 'msanders/snipmate.vim'
@@ -104,6 +109,145 @@ Plug 'Valloric/YouCompleteMe'
 call plug#end()
 " }}}
 
+" Basic settings {{{
+
+" Auto load .vimrc
+" Default is disable. because this may cause some fatal problems.
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+" Editor behavior
+set encoding=utf-8
+set backspace=2  " backspace in insert mode works like normal editor
+set autoread
+
+
+" Backup settings
+" set nobackup  " get rid of anoying ~file
+set backupdir=~/.config/nvim/backup_files//
+set directory=~/.config/nvim/swap_files//
+set undodir=~/.config/nvim/undo_files//
+
+
+" Search settings
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+
+
+" Cursor and Ruler
+set ruler
+set cursorline
+" set number
+" set relativenumber
+hi CursorLine term=bold cterm=bold guibg=Grey40
+
+
+" Auto newline
+set wrap
+set textwidth=80
+
+
+" Use system clipboard
+set clipboard+=unnamedplus
+
+
+" Auto complete
+" set dictionary="/usr/dict/words"
+set completeopt=longest,menuone
+
+" }}}
+"
+" Theme Settings{{{
+syntax on
+set background=dark
+
+let g:seoul256_background = 233
+let g:solarized_termtrans = 1
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+" let g:solarized_termcolors = 16
+
+" colo elflord  " This one a little better than default colorscheme.
+" colo seoul256
+" colo jellybeans
+colo solarized
+" colo material-theme
+" colo hybrid_material
+
+" Airline Settings
+let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
+
+" All options: indent, trailing, long, mixed-indent-file
+let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing']
+set laststatus=2 " Set to 2 enable airline features.
+
+
+" }}}
+
+" Indent setting {{{
+set autoindent
+set smartindent
+set cindent
+"let g:html_indent_inctags = "html,body,head,tbody"
+
+
+" Default indent
+" set shiftwidth=8
+" set tabstop=8
+" set softtabstop=8
+" set expandtab
+
+
+" Automatically delete traling space.
+" autocmd BufWrite * :%s/\s\+$//
+
+
+" Detect filetype
+augroup vim_filetype
+	autocmd!
+	autocmd BufNewFile,BufFilePre,BufRead *.ejs set filetype=html
+	autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+	autocmd BufNewFile,BufFilePre,BufRead *.fish set filetype=sh
+	autocmd BufNewFile,BufFilePre,BufRead .bowerrc set filetype=json
+	autocmd BufNewFile,BufFilePre,BufRead .tern-project set filetype=json
+	autocmd BufNewFile,BufFilePre,BufRead .eslintrc set filetype=json
+	autocmd BufNewFile,BufFilePre,BufRead *.h set filetype=c
+augroup END
+
+
+" Indent settings
+augroup vim_indent
+	autocmd!
+	autocmd Filetype c setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd Filetype cpp setlocal ts=2 sts=2 sw=2 noexpandtab
+	autocmd Filetype go setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd FileType rst setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd FileType asm setlocal ts=8 sts=8 sw=8 noexpandtab
+	autocmd FileType perl setlocal ts=8 sts=8 sw=8 noexpandtab
+	autocmd FileType text setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd Filetype php setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab
+	autocmd Filetype gitcommit setlocal spell textwidth=72
+	autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype eruby setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype css setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype sh setlocal ts=2 sts=2 sw=2 noexpandtab
+	autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype json setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType vim setlocal ts=2 sts=2 sw=2 noexpandtab foldmethod=marker
+	autocmd FileType vue setlocal ts=2 sts=2 sw=2 noexpandtab
+augroup END
+
+let g:indentLine_enabled = 0
+" }}}
+"
 " Key map settings {{{
 let mapleader = ","
 
@@ -128,6 +272,23 @@ inoremap <A-b> <C-o>b
 inoremap <A-w> <C-o>w
 inoremap <C-a> <C-o>I
 inoremap <C-e> <C-o>A
+
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
+" Go to last active tab
+" au TabLeave * let g:lasttab = tabpagenr()
+" nnoremap <silent> <c-l> :exe "tabn ".g:lasttab<cr>
+" vnoremap <silent> <c-l> :exe "tabn ".g:lasttab<cr><Paste>
 
 
 set pastetoggle=<F10>
@@ -220,18 +381,6 @@ nnoremap <space>gpl :Dispatch! git pull<CR>
 autocmd FileType html,css,javascript EmmetInstall
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key='<C-E>'
-
-
-" Airline Settings
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#whitespace#mixed_indent_algo = 1
-" All options: indent, trailing, long, mixed-indent-file
-let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing']
-set laststatus=2 " Set to 2 enable airline features.
-
 
 " Javascript Settings
 let g:javascript_ignore_javaScriptdoc = 1
@@ -344,127 +493,6 @@ au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
 " let g:go_list_type = "quickfix"
 
 
-" }}}
-
-" Basic settings {{{
-
-" Colorscheme and syntax
-syntax on
-set background=dark
-
-let g:seoul256_background = 233
-let g:solarized_termtrans = 1
-" let g:solarized_visibility = "high"
-" let g:solarized_contrast = "high"
-" let g:solarized_termcolors = 16
-
-" colo elflord  " This one a little better than default colorscheme.
-" colo seoul256
-" colo jellybeans
-" colo solarized
-
-
-" Auto load .vimrc
-" Default is disable. because this may cause some fatal problems.
-" autocmd BufWritePost $MYVIMRC source $MYVIMRC
-
-" Editor behavior
-set encoding=utf-8
-set backspace=2  " backspace in insert mode works like normal editor
-set autoread
-
-
-" Backup settings
-" set nobackup  " get rid of anoying ~file
-set backupdir=~/.config/nvim/backup_files//
-set directory=~/.config/nvim/swap_files//
-set undodir=~/.config/nvim/undo_files//
-
-
-" Search settings
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch
-
-
-" Cursor and Ruler
-set ruler
-set cursorline
-" set number
-" set relativenumber
-hi CursorLine term=bold cterm=bold guibg=Grey40
-
-
-" Auto newline
-set wrap
-set textwidth=80
-
-
-" Use system clipboard
-set clipboard+=unnamedplus
-
-
-" Auto complete
-" set dictionary="/usr/dict/words"
-set completeopt=longest,menuone
-
-" }}}
-
-" Indent setting {{{
-set autoindent
-set smartindent
-set cindent
-"let g:html_indent_inctags = "html,body,head,tbody"
-
-
-" Default indent
-" set shiftwidth=8
-" set tabstop=8
-" set softtabstop=8
-" set expandtab
-
-
-" Automatically delete traling space.
-" autocmd BufWrite * :%s/\s\+$//
-
-
-" Detect filetype
-augroup vim_filetype
-	autocmd!
-	autocmd BufNewFile,BufFilePre,BufRead *.ejs set filetype=html
-	autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-	autocmd BufNewFile,BufFilePre,BufRead *.fish set filetype=sh
-	autocmd BufNewFile,BufFilePre,BufRead .bowerrc set filetype=json
-	autocmd BufNewFile,BufFilePre,BufRead .tern-project set filetype=json
-	autocmd BufNewFile,BufFilePre,BufRead .eslintrc set filetype=json
-	autocmd BufNewFile,BufFilePre,BufRead *.h set filetype=c
-augroup END
-
-
-" Indent settings
-augroup vim_indent
-	autocmd!
-	autocmd Filetype c setlocal ts=4 sts=4 sw=4 noexpandtab
-	autocmd Filetype cpp setlocal ts=2 sts=2 sw=2 noexpandtab
-	autocmd Filetype go setlocal ts=4 sts=4 sw=4 noexpandtab
-	autocmd FileType rst setlocal ts=4 sts=4 sw=4 noexpandtab
-	autocmd FileType asm setlocal ts=8 sts=8 sw=8 noexpandtab
-	autocmd FileType perl setlocal ts=8 sts=8 sw=8 noexpandtab
-	autocmd FileType text setlocal ts=4 sts=4 sw=4 noexpandtab
-	autocmd Filetype php setlocal ts=4 sts=4 sw=4 noexpandtab
-	autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab
-	autocmd Filetype gitcommit setlocal spell textwidth=72
-	autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
-	autocmd Filetype eruby setlocal ts=2 sts=2 sw=2 expandtab
-	autocmd Filetype css setlocal ts=2 sts=2 sw=2 expandtab
-	autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
-	autocmd Filetype sh setlocal ts=2 sts=2 sw=2 noexpandtab
-	autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
-	autocmd Filetype json setlocal ts=2 sts=2 sw=2 expandtab
-	autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
-	autocmd FileType vim setlocal ts=2 sts=2 sw=2 noexpandtab foldmethod=marker
-augroup END
 " }}}
 
 " Function {{{
