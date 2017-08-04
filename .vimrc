@@ -6,6 +6,9 @@
 " ~/.config/nvim/init.vim
 "
 "
+" Create Swap Directory
+" $ mkdir ~/.config/nvim/backup_files/ ~/.config/nvim/swap_files/ ~/.config/nvim/undo_files/
+"
 "
 " Install vim-plug
 " Go to this site and see how to get vim-plug.
@@ -76,6 +79,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'jdkanani/vim-material-theme'
 Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'joshdick/onedark.vim'
 
 
 " Switch file and buffer
@@ -88,7 +92,7 @@ Plug 'kien/ctrlp.vim'
 
 " Syntax checker
 " Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 " Edit and autocomplete
 Plug 'scrooloose/nerdcommenter'
@@ -171,9 +175,10 @@ let g:solarized_termtrans = 1
 " colo elflord  " This one a little better than default colorscheme.
 " colo seoul256
 " colo jellybeans
-colo solarized
+" colo solarized
 " colo material-theme
 " colo hybrid_material
+" colo onedark
 
 " Airline Settings
 let g:airline#extensions#tabline#enabled = 1
